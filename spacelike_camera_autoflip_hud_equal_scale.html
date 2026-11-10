@@ -1,0 +1,1023 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>类空 / 类时 · 正交像面 · 光锥自动翻面版</title><style>:root{color-scheme:dark;--ink:#e5eef5;--muted:#90a5b6;--line:#b6cadd2b;--accent:#9cddcf;--panel:#09131fe8}*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#03050b;color:var(--ink);font:12px/1.55 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}#view{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;outline:none}#view.drag{cursor:grabbing}#bar{position:fixed;left:0;right:0;top:0;display:flex;justify-content:flex-end;gap:20px;padding:20px 24px;pointer-events:none;z-index:4;background:linear-gradient(#040812c9,transparent)}.eyebrow{font-size:9px;font-weight:600;letter-spacing:2.2px;color:var(--accent)}h1{font-size:21px;font-weight:550;letter-spacing:.7px;line-height:1.3;margin:5px 0 9px}.badges{display:flex;gap:7px;flex-wrap:wrap}.badge{font-size:10px;padding:3px 8px;border:1px solid var(--line);border-radius:5px;background:#091421a8;color:#bed0de}.badge.positive{color:#a7dfcd}.badge.negative{color:#e1b6d2}.badge.warning{color:#ffd18a;border-color:#ffc58165}nav{display:flex;gap:6px;align-items:flex-start;pointer-events:auto}button,select,input{font:inherit}button,select{color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:8px 11px;border-radius:6px;cursor:pointer}button:hover{border-color:#93c7bd88;background:#142433}button:disabled{opacity:.45;cursor:not-allowed}button.primary{color:#b4e8dc;border-color:#96d7c34d}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}#cross{position:fixed;left:50%;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;pointer-events:none;opacity:.6}#cross:before,#cross:after{content:"";position:absolute;background:#e2f0fc;box-shadow:0 0 3px #000}#cross:before{left:0;top:6px;width:13px;height:1px}#cross:after{left:6px;top:0;width:1px;height:13px}#telemetry{position:fixed;left:18px;bottom:18px;width:324px;padding:9px 10px 10px;border:1px solid #383843;border-radius:3px;background:#101014f2;box-shadow:inset 0 0 0 1px #07070a,0 2px 10px #0008;pointer-events:none;z-index:6;font-size:10px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}#telemetry .eyebrow{margin-bottom:8px}.stat{display:flex;justify-content:space-between;gap:7px;margin:2px 0;color:#b8b8c2}.stat b{font:10.5px ui-monospace,Consolas,monospace;color:#f1f1f5;text-align:right;max-width:155px;overflow-wrap:anywhere}.stat:nth-child(odd){background:#ffffff03}.telemetry-hidden{display:none!important}#velocityDiagram{display:block;width:100%;height:auto;margin-top:8px;border:1px solid #30303a;background:#0a0a0d;image-rendering:auto}.tiny{color:var(--muted);font-size:10px;line-height:1.7}#target{margin-top:7px}#testStatus{color:#9bceb9;margin-top:5px}footer{position:fixed;left:24px;right:24px;bottom:18px;display:flex;justify-content:space-between;gap:15px;color:#b5c4d1;font-size:10px;pointer-events:none;text-shadow:0 1px 5px #000;z-index:2}.secondary{white-space:nowrap;color:#8e9cad}#settings{position:fixed;right:22px;top:72px;bottom:55px;width:357px;overflow:auto;padding:17px 18px;background:var(--panel);backdrop-filter:blur(15px);border:1px solid var(--line);border-radius:9px;z-index:8;box-shadow:0 20px 65px #0006}h2{font-size:15px;margin:0 0 12px;font-weight:550}#settings h2:not(:first-child){margin-top:22px;border-top:1px solid var(--line);padding-top:17px}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:12px 0 6px;font-size:11px}output{font:11px ui-monospace,Consolas,monospace;color:#b0dfd2}.check{display:flex;justify-content:space-between;align-items:center;margin:12px 0;font-size:11px}select,input[type=range]{width:100%}input[type=range]{accent-color:#93d9c7;margin:6px 0}input[type=checkbox]{accent-color:#93d9c7;width:14px;height:14px}select{font-size:11px;padding:8px 6px}#settings p{margin:6px 0 12px}.bounds{display:grid;grid-template-columns:1fr 1fr;gap:9px}.bounds label{font-size:10px;color:var(--muted)}.bounds input{width:100%;background:#050b15;color:var(--ink);border:1px solid var(--line);padding:7px;border-radius:5px;margin-top:4px}.presets{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}.presets button{padding:5px 8px;font-size:10px}.warning{border-left:2px solid #c6a46d;padding-left:9px}.errorText{color:#e8a59b}#help{position:fixed;inset:0;background:#010611c9;z-index:20;overflow:auto;padding:24px;backdrop-filter:blur(8px)}#help article{position:relative;max-width:920px;margin:auto;padding:27px 31px;border:1px solid var(--line);border-radius:12px;background:#0a1522}#help h2{font-size:23px;margin:10px 0 20px}#help h3{font-size:15px;margin:26px 0 10px;font-weight:550}#help p{line-height:1.9;color:#c0cfdd}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.9 ui-monospace,Consolas,"Microsoft YaHei",monospace;background:#030b14;padding:13px 16px;border-radius:6px;color:#b5d8d4}.close{float:right}#boundaryBanner{position:fixed;left:50%;top:120px;transform:translateX(-50%);width:max-content;max-width:80vw;background:#281c0dee;border:1px solid #e2b66477;color:#f0d6ac;border-radius:7px;padding:11px 18px;z-index:5;text-align:center;pointer-events:none}#boundaryBanner span{display:block;font-size:10px;margin-top:5px}#notice{position:fixed;bottom:115px;left:50%;transform:translateX(-50%);background:#0d1b2bef;border:1px solid var(--line);padding:10px 15px;border-radius:7px;max-width:70vw;z-index:30;opacity:0;transition:opacity .15s;pointer-events:none}#notice.show{opacity:1}#error{position:fixed;inset:0;z-index:90;overflow:auto;padding:35px;background:#0c0711;color:#ffc6c0;margin:0}.ui-minimal #bar,.ui-minimal #settings,.ui-minimal footer,.ui-minimal #cross,.ui-minimal #boundaryBanner,.ui-minimal #bridgeProgress,.ui-minimal #notice{display:none!important}.ui-off #bar,.ui-off #telemetry,.ui-off #settings,.ui-off footer,.ui-off #cross,.ui-off #boundaryBanner,.ui-off #bridgeProgress,.ui-off #notice{display:none!important}[hidden]{display:none!important}
+@media(max-width:740px){#bar{padding:12px;gap:8px}h1{font-size:15px}.eyebrow{font-size:8px;letter-spacing:1px}nav{gap:4px;flex-wrap:wrap;max-width:190px;justify-content:flex-end}nav button{font-size:10px;padding:6px 8px}.badge{font-size:9px}#telemetry{left:10px;bottom:10px;width:min(306px,calc(100vw - 20px));padding:8px 9px;font-size:9px}.stat b{font-size:9.5px}.badges{gap:4px}#settings{right:10px;top:108px;bottom:66px;width:min(350px,calc(100vw - 20px))}footer{left:12px;right:12px;bottom:12px;font-size:9px}.secondary{display:none}#boundaryBanner{top:130px;max-width:95vw;font-size:11px}#help{padding:9px}#help article{padding:17px}#help h2{font-size:19px}#notice{max-width:90vw;font-size:11px;bottom:115px}}
+
+#bridgeProgress{position:fixed;left:0;top:0;height:3px;background:#edbf77;width:100%;transform-origin:left;z-index:12}
+.numeric-value{width:100%;background:#050b15;color:var(--ink);border:1px solid var(--line);padding:6px 8px;border-radius:5px;font:11px ui-monospace,Consolas,monospace}
+.slider-window{font-size:10px;color:var(--muted);margin:1px 0 12px}.slider-window summary{cursor:pointer}.slider-window .bounds{margin-top:5px}.slider-window input{font:10px ui-monospace,monospace}.number-label{font-size:9px;color:var(--muted);margin-top:2px}.window-note{font-size:9px;line-height:1.6}#bridgeActions button{padding:5px 8px;font-size:10px}#telemetry{max-height:calc(100vh - 36px);overflow:hidden;pointer-events:none}#telemetry .stat{pointer-events:none}
+</style></head><body><canvas id="view" tabindex="0" aria-label="U 正交类空相机，左键拖动"></canvas>
+<header id="bar"><nav><button id="play" class="primary">运行 P</button><button id="reset">重置 C</button><button id="autoToggle" class="primary" title="T 切换自动 / 手动；鼠标自由观察，V 回正视角">自动航线 T</button><button id="autoViewToggle" aria-pressed="false" title="切换自动跟踪双像与随标架观察">自动视角：关</button><button id="settingsToggle">设置</button><button id="helpToggle">公式 / 说明</button><button id="fullscreen" title="浏览器全屏">⛶</button></nav><div class="telemetry-hidden"><span id="modeBadge"></span><span id="causalBadge"></span><span id="chartBadge"></span></div></header>
+<div id="cross"></div><div id="bridgeProgress" hidden></div>
+<div id="boundaryBanner" hidden><b>零能边界：正交像面退化</b><span>仅显示连续光线极限；没有有限单位镜头标架。继续拖动可进入另一 chart。</span></div>
+<aside id="telemetry"><div class="stat" id="autoStatusRow"><span>自动航线</span><b id="autoTime">待播放</b></div><div id="autoPhase" class="tiny">按 P 开始 · 鼠标自由观察</div><div class="stat"><span>运动</span><b id="runState">暂停</b></div><div class="stat"><span>分段参数 s / τ / λ</span><b id="arc">0</b></div><div class="stat"><span>实验室 t</span><b id="labT">0</b></div><div class="stat"><span>|d𝐱/dt|</span><b id="speed"></b></div><div class="stat"><span>实验室时间率 dt/dλ</span><b id="timeRate"></b></div><div class="stat"><span>空间推进率 |d𝐱/dλ|</span><b id="spaceRate"></b></div><canvas id="velocityDiagram" width="302" height="238" aria-label="四速时空图"></canvas><div class="telemetry-hidden"><span id="zValue"></span><span id="gammaLabel"></span><span id="gamma"></span><span id="normalError"></span><span id="screenError"></span><span id="screenMetric"></span><span id="bodyError"></span><span id="crossings"></span><span id="causalCount"></span><span id="repairCount"></span><span id="shift"></span><span id="target"></span><span id="testStatus"></span></div></aside>
+<footer><span id="controls">右拖右看 · 上拖抬头　W/S：∓H　A/D、R/F：法向左右上下　Q/E：横滚</span><span class="secondary">M 空间网格　V 当前片归零　H UI三态　<span id="fps"></span></span></footer>
+<section id="settings" hidden>
+<h2>类空镜头规则（像面保持原版）</h2>
+<label class="row" for="mode">相机模式</label><select id="mode"><option value="0">A · 几乎处处严格，允许边界奇异跨区</option><option value="1">B · 完全严格，转头不能跨 chart</option></select><p class="tiny" id="modeNote"></p>
+<div id="singularSettings"><label class="row">紧致路径参数：横拖一屏的周期数 <output id="turnsVal"></output></label><input id="turns" type="range" min="0.25" max="4" step="0.05" value="2"><p class="tiny">这是中心光线的紧致坐标，不是有限正交标架在转两圈。接近边界时单位法向轴发散，正则视场整体塌缩；越过后再展开。</p><div class="presets"><button id="beforeBoundary">边界前预设</button><button id="atBoundary">精确边界预设</button><button id="afterBoundary">边界后预设</button></div><p class="tiny">以上只设置镜头相对姿态，不修改机身或场景。关闭“频移”可查看边界上整幅光路收敛到同一方向；开启频移时零能使画面变黑。</p></div>
+<div id="strictSettings" hidden><label class="row">严格转头：每屏宽快度增量 <output id="rapidityVal"></output></label><input id="rapidity" type="range" min="0.25" max="5" step="0.05" value="2"><p class="tiny">鼠标仅施加有限 SO⁺(1,2) boost，Q/E 作法空间横滚。不会按 2π 回绕；数值极限仅拒绝增量，可反向拖回，不换片。</p></div>
+<div id="spacelikeLensSettings"><label class="row">双曲像面水平半宽 ρ <output id="extentVal"></output></label><input id="extent" type="range" min="0.25" max="2.5" step="0.05" value="1.2"><p class="tiny">像素在当前单位双曲方向面上作指数参数化。它不是普通的 110° 针孔视场；两模式使用完全相同的正则光学窗口。</p>
+<label class="row" for="initialChart">显式初始化的 chart</label><select id="initialChart"><option value="1">+1：K·U &gt; 0</option><option value="-1">−1：K·U &lt; 0</option></select><button id="initializeChart">以所选 chart 重新初始化镜头</button><p class="tiny">这是明确的初始数据更换，不是转头跨区。V 只在当前 chart 内归零；C 完整重置时使用所选初始 chart。</p>
+</div><div id="timelikeLensSettings" hidden><label class="row">类时转头：每屏宽圈数 <output id="sensitivityVal"></output></label><input id="sensitivity" type="range" min="0.25" max="4" step="0.05" value="2"><p class="tiny">类时自动使用 u⊥ 中的 SO(3) 镜头，水平视场 110°。这里没有圆盘双片投影。上方 A/B 仅保存返回类空后的规则。</p></div><h2>运动与场景</h2><label class="check">自动视角：跟踪双像并拓宽像面<input id="autoView" type="checkbox"></label><p class="tiny">P：播放 / 暂停自动航线；C：从默认场景重来；T：自动 / 手动。自动航线中鼠标自由观察，V 回正视角，Q/E 可滚转；W/S/A/D/R/F 接管为手动。默认播放速率 0.65 大致对应 PR 10:41–11:33：按 P 对应 10:41，起步后主段保持匀速播放，52 秒时第二次消失；随后缓慢变速，用约 13.5 秒完成掉头重现。播放速率以 0.65 为基准整体缩放此节奏。关闭自动视角时，视角随标架变化，只补偿滚转，像面半宽保持设置值。开启后自动跟踪双像，并将像面半宽平滑拓至至少 2.4。两种模式下鼠标均可自由观察；开关采用两级一秒特征时间的指数平滑，转速渐起渐落，暂停时也生效；切换不改变航线或播放进度。</p><label class="row">局部法向推力 <output id="thrustVal"></output></label><input id="thrust" type="range" min="-3" max="0.7" step="0.02" value="-0.7"><label class="row">播放速率（字幕同步基准 0.65） <output id="rateVal"></output></label><input id="rate" type="range" min="0.1" max="3" step="0.05" value="0.65">
+<h2>因果类型自动翻面（独立于镜头跨片）</h2>
+<label class="check">允许在光锥无穷远自动类空 ⇄ 类时翻面<input id="allowBridge" type="checkbox" checked></label>
+<label class="row">翻面紧致距离 δ<output id="bridgeBandVal"></output></label><input id="bridgeBand" type="range" min="0.0001" max="0.02" step="0.0001" value="0.004">
+<p class="tiny warning">没有“按哪个键才能跨越”的特殊规则。程序看当前实际推力继续一步后是否还在逼近光锥；若会，并且进入 δ=||𝐔|−|Uᵗ||/(|𝐔|+|Uᵗ|) 的翻面带，就在同一事件上把单位切向量换到光锥另一侧面对面的对偶点。没有有限时长的非单位 V 段，也不会锁住转头。类空像面仍完全沿用原来的 U⊥ 双曲像面逻辑，不使用双片圆盘。</p>
+<div class="presets"><button id="restDemo">未来类时静止</button><button id="pastRestDemo">过去类时静止</button><button id="ballDemo">类时静止看 2c 球</button></div>
+<p class="tiny">上面三个只是场景初始化，不参与跨越判定。翻面由“当前状态 + 当前实际操作”自动决定；停止、侧向转弯或远离光锥都不会因为某个键名而触发。</p>
+<button id="repairFrame">安全修正当前标架（不重置朝向）</button><p class="tiny">运行中自动清理可安全修复的正交漂移。真实条件数过大时保留最后有效状态，仍可反向操作；零能退化像面不强行单位化。</p>
+<label class="check">2c 运动球 <input id="moving" type="checkbox" checked></label><label class="row" for="sourceLab">运动球发射端约定</label><select id="sourceLab"><option value="0">类空球切向量投影</option><option value="1">实验室时钟发光图样</option></select><p class="tiny">实际按 t_emit=t_camera−光程求交；不是把当前时刻球当静止物体。球的超光速运动与黑体响应是场景约定。</p>
+<h2>实验室空间网格</h2>
+<label class="row" for="spaceGrid">空间网格 <span class="tiny">M 循环切换</span></label>
+<select id="spaceGrid"><option value="0" selected>关闭</option><option value="1">只开启平面网格</option><option value="2">开启立体网格</option></select>
+<div id="spaceGridControls">
+<label class="row" for="gridSpacing">网格间距（实验室长度）<output id="gridSpacingVal"></output></label><input id="gridSpacing" type="range" min="3" max="12" step="0.5" value="6">
+<label class="row" for="gridOpacity">线框不透明度 <output id="gridOpacityVal"></output></label><input id="gridOpacity" type="range" min="0.1" max="0.9" step="0.05" value="0.55">
+<label class="row" for="gridRange">绘制距离（实验室长度）<output id="gridRangeVal"></output></label><input id="gridRange" type="range" min="24" max="180" step="6" value="96">
+<label class="row" for="gridY">基准平面高度 y <output id="gridYVal"></output></label><input id="gridY" type="range" min="-12" max="6" step="0.5" value="-2.5">
+</div>
+<p class="tiny window-note">实际数值可直接输入，滑动窗口可自行扩展。格距/距离必须为正，不透明度为 0–1，高度可为任意可安全表示的正负值。立体远景超出逐格预算时按距离使用 4 的幂次层级简化，不截断到旧的 180。</p>
+<p class="tiny">网格固定在实验室坐标中，沿同一条过去光线绘制；不是贴屏网格，也不是类空“固有空间”。平面网格有透明空格，立体网格在三个轴向延伸，每四格加粗。球和三棱锥会遮住后方线框；线框沿用静止发射端的频移与反色约定。</p>
+<h2>黑体与显示</h2><label class="check">频移（色温与亮度）<input id="spectral" type="checkbox" checked></label><label class="check">能量异号按 max+min−RGB 反色<input id="invert" type="checkbox" checked></label><label class="row">曝光 EV <output id="exposureVal"></output></label><input id="exposure" type="range" min="-7" max="4" step="0.1" value="-0.5"><label class="check">限制 |g|⁴ 亮度倍率<input id="limit" type="checkbox" checked></label><div class="bounds"><label>最低倍率<input id="low" type="number" min="0" step="any" value="0"></label><label>最高倍率<input id="high" type="number" min="0" step="any" value="64"></label></div><div id="boundsError" class="tiny errorText"></div><div class="presets"><button data-high="1">0–1</button><button data-high="16">0–16</button><button data-high="64">0–64</button><button id="unitBrightness">固定倍率 1</button></div><p class="tiny">倍率限制不修改真实频移符号或色温。保留原 KelvinToRgb 低于 400.01 K 返回黑色的行为。</p>
+<label class="check">星云<input id="nebula" type="checkbox" checked></label><label class="check">物体结构线（诊断）<input id="lines" type="checkbox" checked></label><label class="check">双曲方向等距线（像面诊断，G）<input id="grid" type="checkbox"></label><label class="check">准星<input id="reticle" type="checkbox" checked></label><label class="row">渲染分辨率</label><select id="quality"><option value="0.7">70% · 省算力</option><option value="1" selected>100%</option><option value="1.5">150% · 超采样</option></select>
+</section>
+<div id="help" hidden><article><button id="closeHelp" class="close">关闭</button><div class="eyebrow">NORMAL FRAME / SCREEN / SINGULAR LIMIT</div><h2>正交像面、光锥无穷远翻面与数值维护</h2><h3>运动类型：由继续操作决定何时翻面</h3>
+<p>A/B 两种类空镜头的双曲指数窗口、逐像素 U⊥∩K⊥ 屏幕与奇异塌缩保持原有数学定义。类时使用 u⊥ 的普通 110° 针孔镜头和 SO(3) 转头。没有引入把前后两片一起投到圆上的射影图。</p>
+<pre>ε = U² = +1（类空）或 −1（类时）。
+B=(U,D,N₁,N₂)，签名 (ε,−ε,+1,+1)。
+U′=a；Eᵢ′=−(a·Eᵢ)U/ε。
+
+定义稳定的光锥紧致距离：
+δ(U)= ||𝐔|−|Uᵗ|| / (|𝐔|+|Uᵗ|)。
+单位双曲面上 δ→0 等价于快度 → ±∞；不是在有限点“碰到 c”。
+
+若当前操作继续一个积分子步后 δ 继续减小，并进入设置的翻面带：
+U₀=(𝐮,t)，k=|𝐮|，
+U★=(|t|𝐮/k, sign(t)k)。
+于是 U★²=−U₀²，U₀·U★=0，|v★/c|=1/|v₀/c|。
+程序在同一事件 X 上把 U₀ 换成 U★，不插入非单位世界线段。</pre>
+<p>所以跨越条件不读取 W、S 或任何特定键名。键盘、脚本 API、组合推力都走同一个判定：只看这一步实际生成的四加速度是否让单位切向量继续逼近光锥。翻面后重新建立目标因果类型的单位标架，并用原有的视线接续代码保持准星和屏幕定向；类空端仍是原来的双曲正交像面，类时端仍是 u⊥ 针孔像面。</p>
+<p>“镜头跨 chart 次数”与“因果类型翻面次数”独立记录。过去向类时不会被偷偷改成未来向。翻面本身不消耗 λ、不移动 X；它是模拟器对双曲无穷远的粘合规则，而不是有限固有加速度穿过类光状态。</p>
+<h3>新增：只修复可安全归一化的标架漂移</h3>
+<p>机身误差积累时，把当前已输运的空间轴表达在当前时间轴的辅助静止坐标中，作双遍正交化，再表达回原坐标。它不是重新选择实验室左右上轴，也不清空已积累的朝向。严格模式 J 亦作正交修正，保留时间定向与 chart。HUD 显示修正次数。</p>
+<p>修正前检查有限性、Gram 偏差与舍入误差估计。真实大 boost 的条件数不会因为“归一化”而消失；超出浮点精度预算时只拒绝进一步失稳的增量，保留最后有效状态，允许反向返回。零能退化像面不作这种修正；因果翻面只发生在两个有效单位标架之间。</p>
+<h3>新增：实际值与滑动窗口分离</h3>
+<p>每个滑条都配实际数值输入和可编辑“滑动窗口”。实际值不受旧滑条端点约束；输入超窗时窗口自动扩展，不会静默夹回原范围。推力滑条仍用 ln(h)，其实际数值框填写 h。格距/距离为正、不透明度 0–1、亮度 0≤最低≤最高等语义条件仍保留。对 shader 浮点表示、双曲窗口过大及运算预算的保护也保留并提示。</p>
+<p>立体网格近处维持输入格距，远处采用实验室原点锚定、间隔为 4 的幂次的层级简化。绘制距离不再限制为 180；极远、极密网格不是无限算力逐格遍历。平面网格不做这类远景层级切换。</p>
+
+<p>两种模式在所有正则中心状态上，都使用真正位于 <b>U⊥</b> 的单位镜头三轴 (H,R,V)，签名 (−,+,+)。每条像素光线还具有自己的单位屏幕轴，属于 <b>U⊥∩K⊥</b>。不是沿用上一版 T⊥ 像面，再把它重新命名为共动像面。</p>
+<h3>共同的机身与正则光学</h3><pre>四维次序 (x,y,z,t)，η=diag(+,+,+,−)。
+B=(U,T,N₁,N₂)，U²=+1，T²=−1，N₁²=N₂²=+1。
+X′=U，U′=a，E_A′=−(a·E_A)U。
+a=A₀T+A₁N₁+A₂N₂，每步恒定机身分量用解析解推进。
+机身 B 按历史输运，并在安全区作小量重正交修正；鼠标不改 X、U、B。
+
+镜头 (H,R,V)⊂U⊥：H²=−1；R²=V²=1；两两正交。
+ρ=√(x²+y²)，D=(xR+yV)/ρ。
+H_pixel=coshρ H−sinhρ D。
+Kσ(x,y)=σU−H_pixel，σ=±1。
+Kσ²=0，Kσ·U=σ，Kσ 为过去指向。
+局部像面 S(K)=U⊥∩K⊥。
+屏幕正交轴通过 H→H_pixel 的法空间 boost 得到。
+
+dℓ²=dρ²+sinh²ρ dφ²（双曲方向面）。</pre>
+<p>屏幕上的有限矩形是双曲方向曲面的坐标窗口，不是一个实体探测平板。按标准 Kσ·U=σ 归一化求像素导数，它们都在 U⊥。GPU 可以正比例缩放 Kσ 稳定计算；这不会改变光路、频移比或规范的局部屏幕平面。</p>
+<h3>A · 几乎处处严格，边界奇异过渡</h3><p>保存一个有界的紧致方向参数 Q，用它产生中心光线 k₀=cU−T+b₁N₁+b₂N₂，c²+b₁²+b₂²=1。Q 仅是坐标数据，<b>不是拿来冒充法向镜头的三根空间轴</b>。实际镜头由以下式子给出。</p><pre>c≠0 时：σ=sign(c)，H=(T−b₁N₁−b₂N₂)/|c|。
+紧致坐标的右/上切向 eᵢ 满足 eᵢ·T=eᵢ·k₀=0，eᵢ²=1。
+实际法向屏幕轴：Sᵢ=eᵢ−[(eᵢ·U)/c] k₀。
+Sᵢ·U=0，Sᵢ·k₀=0，Sᵢ·Sⱼ=δᵢⱼ。
+(H,S₁,S₂) 就是送入上方双曲像面公式的真实镜头。
+
+一个横向例子：k₀(θ)=−T+cosθ U+sinθ N₁。
+c=cosθ；镜头 γ=1/|cosθ|；在 θ=π/2 发散。
+到达 c=0 时：S(K) 退化为 (+,0)，不再有两根有限单位屏幕轴。
+只保留光线极限 −T+b₁N₁+b₂N₂；有限像面上的所有像素同向。
+穿过之后 σ 改变，另一 chart 的正则镜头重新存在。</pre>
+<p><b>边界画面是真实塌缩，不是旧帧冻结，也不是与普通相机做淡入淡出。</b>只有这一个奇异状态丢失有限正交屏幕。开启频移时 E_cam=0，按给定黑体函数整幅变黑；关闭频移可看到像素收敛到同一场景方向。</p>
+<p>在有限浮点计算中，|c|&lt;10⁻⁴ 时不再安全展开单位镜头作推力和内积诊断，界面明确标记；射线仍使用解析正比例表达，不把 c 截断到一个有限 boost。数值窄区内保持惯性，暂缓方向推力。|c|≤2×10⁻¹⁴ 视为触到精确边界，避免 sin/cos 舍入把 π/2 误当有限快度。此处不宣称“处处有有限正交标架”。</p>
+<h3>B · 完全严格，不靠转头换 chart</h3><p>保存法空间洛伦兹标架 J。鼠标仅在 (H,R) 或 (H,V) 中施加有限 boost，横滚只在 (R,V) 中圆旋转。相机始终使用同一个固定 σ；因为变换保持 U，K·U 不会改变。严格模式可以选 + 或 − 作为初始数据，但不能把这种重初始化说成连续转头。</p><pre>右看 δ：H′=coshδ H−sinhδ R，R′=coshδ R−sinhδ H。
+上看同理，换 R 为 V。Q/E 作 R/V 的普通旋转。
+σ 固定不变；没有快度 2π 回绕或边界切换。
+浮点护栏按双精度舍入误差与标架条件数估算，不再固定在 J=128。安全区自动重正交；真实精度不足时拒绝增量。
+护栏是有限的数值限制，不是已经到达零能边界；反拖可返回。</pre>
+<h3>模式切换与重置</h3><p>只在正则且可数值表示的状态切换模式：保留机身、当前中心方向、局部屏幕姿态和整个双曲像面映射。太靠近边界无法进入严格有限标架时，拒绝切换并提示。V 在当前 chart 内归零；设置中的“以所选 chart 重新初始化”是显式换初始数据。C 重置全部运动与镜头，不重置显示选项。</p>
+<h3>推力与历史功能的边界</h3><pre>W/S 对应 −H/+H，A/D 对应 −R/+R，R/F 对应 +V/−V。
+a=(S−W)hH+(D−A)hR+(R−F)hV，a·U=0。
+a²=h²[−(S−W)²+(D−A)²+(R−F)²]。
+反向键相抵，组合键线性叠加，不对零模方向归一化。</pre><p>这里是法空间操控，不再承诺“左转90°后W”这种普通欧氏角度语义。以上两模式描述类空正则区；新增的运动类型翻面是对双曲无穷远的离散粘合规则，并不把类光点冒充正则单位标架。仍保留 10 个静止球、8 个三棱锥、不同温度星盘、星云、2c 球、频移亮度范围和异号反色。</p>
+<h3>光路和频移</h3><pre>实验室射线 d=K.xyz/(−Kᵗ)，t_emit=t_camera−distance。
+2c 球 C(t)=(28,4.8,−1)+(2,0,0)t，半径 1.3。
+求交使用 t_emit 的球面世界管，不用当前帧球位置。
+静止发射端 E_emit=−Kᵗ；2c 球默认 E_emit=K·(2,0,0,1)/√3。
+相机端 E_cam=K·U。g=E_cam/E_emit。
+T_seen=|g|T_emit，B=|g|⁴ 或设置的限幅。
+E_cam·E_emit&lt;0 时 c→max(c)+min(c)−c。
+每个正则画面的相机端属于同一符号 chart；运动发射体的源端可另有符号。</pre><p>几何约束、零光线与费米输运是明确数学构造；类空频率、黑体与 |g|⁴/反色是既有显示约定，不声称唯一的实体类空探测器响应。发射端投影过零时使用 |g|≤10⁴ 的极端数值护栏。所有诊断网格可关闭。</p>
+<h3>空间网格（新增）</h3>
+<p>M 在“关闭 / 只开启平面网格 / 开启立体网格”间循环。网格原点为 (0,y₀,0)，间距为 h：平面网格在 y=y₀；立体线框沿 x、y、z 三方向延伸。它是在实验室中静止的辅助参照，不是 U⊥ 内的欧氏网格。原来的 G 仍只切换双曲方向等距线，两种网格互不关联。重置 C 保留网格选项。</p>
+<pre>网格射线：r(ℓ)=X.xyz+ℓd，t_emit=X.t−ℓ，ℓ&gt;0。
+平面：y=y₀；线条在 x=mh 或 z=nh。
+立体：由三个正交平面族上的窄线带组成透明线框。
+线框只画在最近物体之前；空格不遮挡球体、三棱锥或星空。
+静止网格发射端：E_emit=−Kᵗ；显示比 g_grid=(K·U)/(−Kᵗ)。
+透明度、抗锯齿和远距淡出是诊断显示约定，不是物质动力学。
+HUD：dt/ds 和 |d𝐱/ds| 是相对实验室、每单位类空弧长的变化率。
+它们不是固有时读数；γ_lens 是镜头归一化量，不是机身的 γ_s。</pre>
+<p>绘制距离是以相机为中心的可视范围；网格节点本身始终锁定实验室坐标，移动时不重新对齐。立体网格比平面网格更耗算力。网格关闭时走原有渲染分支；诊断 trace/命中仍针对原场景物体，不把虚拟线框当作新目标。</p>
+<h3>快捷键与自检</h3><p>左键拖动右看/抬头，WASD/RF 施加法向曲率，Q/E 横滚；滚轮调推力；P/Space 暂停；V 当前片归零；C 完整重置；M 循环空间网格；G 双曲方向等距线；H UI三态。打开时暂停，按推力键会开始推进。失焦时自动暂停。几何、像面、两个模式的奇异和非奇异行为均附带可复现自检。</p><pre id="testReport">检查中…</pre><p class="tiny">单文件离线 WebGL 2，无外部脚本、纹理或字体。调试接口：window.SpacelikeLab。</p></article></div>
+<div id="notice" role="status"></div><pre id="error" hidden></pre>
+<script id="vertex" type="x-shader/x-vertex">#version 300 es
+precision highp float;
+void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.-1.,0.,1.);}
+</script><script id="fragment" type="x-shader/x-fragment">#version 300 es
+precision highp float;
+precision highp int;
+out vec4 fragColor;
+uniform vec2 uResolution;
+uniform vec4 uPosition,uU,uT,uN1,uN2;
+uniform int uOptics,uBridge;
+uniform vec4 uOptT,uOptR,uOptV,uOptF,uCamEnergy;
+uniform float uTimeSign;
+uniform vec4 uStableBoost;
+uniform vec3 uRestR,uRestV,uRestF;
+uniform float uZ,uSpan,uExposure;
+uniform vec2 uB;
+uniform vec3 uCR,uCV;
+uniform int uSpectral,uInvert,uLines,uNebula,uGrid,uMoving,uSourceLab,uProbe,uLimit;
+uniform vec2 uBounds;
+uniform int uSpaceGrid;
+uniform float uGridSpacing,uGridOpacity,uGridRange,uGridY;
+uniform vec4 uSpheres[10];
+uniform vec3 uA[32],uC[32],uD[32];
+uniform vec4 uBall;
+uniform vec3 uBallVelocity;
+uniform sampler2D uStars;
+const float PI=3.14159265358979323846;
+const float FAR=1e20;
+float dm(vec4 a,vec4 b){return dot(a.xyz,b.xyz)-a.w*b.w;}
+// Exact supplied KelvinToRgb and representative wavelength color functions below.
+vec3 KelvinToRgb(float Kelvin)
+{
+    if (Kelvin < 400.01) return vec3(0.0);
+    float Teff     = (Kelvin - 6500.0) / (6500.0 * Kelvin * 2.2);
+    vec3  RgbColor = vec3(0.0);
+    RgbColor.r = exp(2.05539304e4 * Teff);
+    RgbColor.g = exp(2.63463675e4 * Teff);
+    RgbColor.b = exp(3.30145739e4 * Teff);
+    float BrightnessScale = 1.0 / max(max(1.5 * RgbColor.r, RgbColor.g), RgbColor.b);
+    if (Kelvin < 1000.0) BrightnessScale *= (Kelvin - 400.0) / 600.0;
+    RgbColor *= BrightnessScale;
+    return RgbColor;
+}
+vec3 WavelengthToRgb(float wavelength) {
+    vec3 color = vec3(0.0);
+    if (wavelength <= 380.0 ) {
+        color.r = 1.0; color.g = 0.0; color.b = 1.0;
+    } else if (wavelength >= 380.0 && wavelength < 440.0) {
+        color.r = -(wavelength - 440.0) / (440.0 - 380.0); color.g = 0.0; color.b = 1.0;
+    } else if (wavelength >= 440.0 && wavelength < 490.0) {
+        color.r = 0.0; color.g = (wavelength - 440.0) / (490.0 - 440.0); color.b = 1.0;
+    } else if (wavelength >= 490.0 && wavelength < 510.0) {
+        color.r = 0.0; color.g = 1.0; color.b = -(wavelength - 510.0) / (510.0 - 490.0);
+    } else if (wavelength >= 510.0 && wavelength < 580.0) {
+        color.r = (wavelength - 510.0) / (580.0 - 510.0); color.g = 1.0; color.b = 0.0;
+    } else if (wavelength >= 580.0 && wavelength < 645.0) {
+        color.r = 1.0; color.g = -(wavelength - 645.0) / (645.0 - 580.0); color.b = 0.0;
+    } else if (wavelength >= 645.0 && wavelength <= 750.0) {
+        color.r = 1.0; color.g = 0.0; color.b = 0.0;
+    } else if (wavelength >= 750.0) {
+        color.r = 1.0; color.g = 0.0; color.b = 0.0;
+    }
+    float factor = 0.3;
+    if (wavelength >= 380.0 && wavelength < 420.0) factor = 0.3 + 0.7 * (wavelength - 380.0) / (420.0 - 380.0);
+    else if (wavelength >= 420.0 && wavelength < 645.0) factor = 1.0;
+    else if (wavelength >= 645.0 && wavelength <= 750.0) factor = 0.3 + 0.7 * (750.0 - wavelength) / (750.0 - 645.0);
+    
+    return color * factor / pow(color.r * color.r + 2.25 * color.g * color.g + 0.36 * color.b * color.b, 0.5) * (0.1 * (color.r + color.g + color.b) + 0.9);
+}
+vec3 anti(vec3 c){return vec3(max(max(c.r,c.g),c.b)+min(min(c.r,c.g),c.b))-c;}
+vec3 shiftRGB(vec3 base,float s){if(s<1e-8)return vec3(0.);vec3 c=base.r*WavelengthToRgb(max(453.,645./s))+base.g*1.5*WavelengthToRgb(max(416.,510./s))+base.b*.6*WavelengthToRgb(max(380.,440./s));float a=dot(base,vec3(.3,.6,.1)),b=dot(c,vec3(.3,.6,.1));return c*a/max(b,.001);}
+float hash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
+float noise3(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+float fbm(vec3 p){float n=0.,a=.5;for(int i=0;i<4;i++){n+=a*noise3(p);p=p*2.02+vec3(4.7,-8.3,13.2);a*=.52;}return n;}
+vec3 sky(vec3 rd,float shift){vec3 col=vec3(0.);if(uNebula==1){float band=exp(-pow(dot(rd,normalize(vec3(.24,.91,.33)))*3.6,2.)),n=fbm(rd*5.+vec3(3,7,-5)),dust=fbm(rd*19.+4.1*n);vec3 base=mix(vec3(.025,.08,.13),vec3(.17,.065,.14),smoothstep(.3,.7,n));base*=pow(max(n-.2,0.)*1.6,2.)*band*(1.-.75*smoothstep(.49,.7,dust));col+=uSpectral==1?shiftRGB(base,shift):base;}
+ vec2 uv=vec2(atan(rd.z,rd.x)/(2.*PI)+.5,asin(clamp(rd.y,-1.,1.))/PI+.5);vec4 star=texture(uStars,uv);if(star.a>1e-6){float temp=star.r/star.a*40000.;col+=KelvinToRgb(temp*shift)*star.g*6.;}return col;}
+float sphere(vec3 ro,vec3 rd,vec4 s){vec3 o=ro-s.xyz;float b=dot(o,rd),d=b*b-dot(o,o)+s.w*s.w;if(d<0.)return FAR;float a=-b-sqrt(d);if(a>1e-4)return a;a=-b+sqrt(d);return a>1e-4?a:FAR;}
+float triangle(vec3 ro,vec3 rd,vec3 a,vec3 b,vec3 c,out vec3 bary){vec3 e=b-a,f=c-a,p=cross(rd,f);float det=dot(e,p);bary=vec3(0.);if(abs(det)<1e-8)return FAR;vec3 z=ro-a,q=cross(z,e);float u=dot(z,p)/det,v=dot(rd,q)/det,t=dot(f,q)/det;bary=vec3(1.-u-v,u,v);return min(min(bary.x,bary.y),bary.z)>=0.&&t>1e-4?t:FAR;}
+float movingHit(vec3 ro,vec3 rd){vec3 O=ro-uBall.xyz-uBallVelocity*uPosition.w,D=rd+uBallVelocity;float a=dot(D,D),b=2.*dot(O,D),c=dot(O,O)-uBall.w*uBall.w,d=b*b-4.*a*c;if(d<0.||a<1e-10)return FAR;float sq=sqrt(max(0.,d)),q=-.5*(b+(b<0.?-sq:sq)),t0,t1;if(abs(q)>1e-8){t0=q/a;t1=c/q;}else{t0=-b/(2.*a);t1=t0;}float t=FAR;if(t0>1e-4)t=min(t,t0);if(t1>1e-4)t=min(t,t1);return t;}
+vec3 tone(vec3 c){c=min(max(c*uExposure,0.),vec3(1e8));c=clamp(c*(2.51*c+.03)/(c*(2.43*c+.59)+.14),0.,1.);return pow(c,vec3(1./2.2));}
+// Fixed laboratory-space reference lattice. Pixel derivatives are evaluated
+// BEFORE divergent traversal, then transported analytically to each plane hit.
+float latticeStroke(float coordinate,float aa,float h){
+ float index=floor(coordinate/h+.5);
+ float dist=abs(coordinate-index*h);
+ float major=1.-step(.25,abs(mod(index+2.,4.)-2.));
+ float width=h*mix(.0045,.008,major);
+ aa=max(aa,.0001);
+ float cover=(1.-smoothstep(max(0.,width-aa),width+aa,dist))*min(1.,width/aa);
+ return cover*mix(.63,1.,major);
+}
+float latticePlane(vec3 r,vec3 d,vec3 dx,vec3 dy,float t,int axis,float h){
+ vec3 hit=r+t*d;
+ vec3 px=t*(dx-d*(dx[axis]/d[axis]));
+ vec3 py=t*(dy-d*(dy[axis]/d[axis]));
+ vec3 aa=.65*(abs(px)+abs(py));
+ float coverage=0.;
+ for(int j=0;j<3;j++)if(j!=axis)coverage=max(coverage,latticeStroke(hit[j],aa[j],h));
+ return coverage*(1.-smoothstep(.62*uGridRange,uGridRange,t));
+}
+void latticeSegment(vec3 r,vec3 rd,vec3 dx,vec3 dy,float begin,float end,float h,inout float alpha){
+ vec3 next=vec3(FAR),stride=vec3(FAR),at=r+begin*rd;
+ for(int j=0;j<3;j++)if(abs(rd[j])>=1e-8){
+  float cell=floor(at[j]/h),boundary=(cell+(rd[j]>0.?1.:0.))*h;
+  stride[j]=h/abs(rd[j]);next[j]=begin+(boundary-at[j])/rd[j];
+  if(next[j]<=max(.001,begin+max(1e-6,begin*1e-6)))next[j]+=stride[j];
+ }
+ for(int n=0;n<128;n++){
+  float t=min(next.x,min(next.y,next.z));if(t>=end)break;
+  float cov=0.,eps=max(1e-5,t*2e-6);
+  for(int j=0;j<3;j++)if(abs(next[j]-t)<=eps){cov=max(cov,latticePlane(r,rd,dx,dy,t,j,h));next[j]+=stride[j];}
+  float a=uGridOpacity*cov;alpha+=(1.-alpha)*a;if(alpha>.985)break;
+ }
+}
+float worldGridAlpha(vec3 ro,vec3 rd,vec3 dx,vec3 dy,float opaqueDistance){
+ if(uSpaceGrid==0||uGridOpacity==0.)return 0.;
+ vec3 r=ro-vec3(0.,uGridY,0.);float stop=min(uGridRange,opaqueDistance),near=.001;
+ if(uSpaceGrid==1){if(abs(rd.y)<1e-8)return 0.;float t=-r.y/rd.y;if(t<=near||t>=stop)return 0.;return uGridOpacity*latticePlane(r,rd,dx,dy,t,1,uGridSpacing);}
+ float alpha=0.,h=uGridSpacing,begin=0.;
+ // Fine grid near the camera, coarser nested LAB-ANCHORED subsets farther away.
+ // Each segment spans <=48h, so its 128-plane loop is sufficient for every ray.
+ // Extremely large display ranges increase shell growth, not an arbitrary UI cap.
+ float stages=max(1.,ceil(log2(max(stop/(48.*h),1.))/(2.*19.)));
+ float growth=exp2(2.*stages);
+ for(int level=0;level<20;level++){
+  float end=min(stop,48.*h);if(end>begin)latticeSegment(r,rd,dx,dy,begin,end,h,alpha);
+  if(end>=stop||alpha>.985)break;begin=end;h*=growth;
+ }
+ return clamp(alpha,0.,1.);
+}
+vec4 stableOpticalRay(vec3 n,vec4 original){
+ if(uStableBoost.w<=32.)return original;
+ vec3 nw=normalize(n.x*uRestR+n.y*uRestV+n.z*uRestF),axis=normalize(uStableBoost.xyz),d=nw-axis;
+ float g=uStableBoost.w,sp=length(uStableBoost.xyz),delta=.5*dot(d,d),small=1./(g+sp);
+ return vec4(d+axis*(small-(g-1.)*delta),-(small+sp*delta));
+}
+void main(){
+ vec2 q=(2.*gl_FragCoord.xy-uResolution)/uResolution.x*(uOptics==0?uSpan:1.4281480067421144);
+ float rho=length(q),cam;vec2 b;vec4 K;vec3 opticalN;
+ if(uOptics==0){
+ if(uZ==0.){cam=0.;b=uB;}else{
+  float ep=exp(rho),em=1./ep,ch=.5*(ep+em),shc=rho<1e-4?1.+rho*rho/6.:.5*(ep-em)/rho;
+  float sg=uZ<0.?-1.:1.;float A=ch-sg*shc*(q.x*uCR.z+q.y*uCV.z);
+  cam=uZ/A;b=uB+abs(uZ)*shc/A*(q.x*uCR.xy+q.y*uCV.xy);
+ }
+ // Original hyperbolic screen. NOT stereographic projection, NOT both sheets on a disc.
+ K=cam*uU-uT+b.x*uN1+b.y*uN2;opticalN=vec3(b,cam);
+ if(uBridge==1)cam=cam*uCamEnergy.x-uCamEnergy.y+b.x*uCamEnergy.z+b.y*uCamEnergy.w;
+ }else{
+  vec3 n=normalize(vec3(q,1.));opticalN=n;K=-uOptT+n.x*uOptR+n.y*uOptV+n.z*uOptF;
+  cam=uBridge==1?-uCamEnergy.x+dot(n,uCamEnergy.yzw):uTimeSign;
+ }
+ K=stableOpticalRay(opticalN,K);float lab=-K.w;
+ if(!(lab>0.)){fragColor=vec4(1,0,1,1);return;}
+ vec3 rd=normalize(K.xyz/lab),ro=uPosition.xyz;
+ vec3 rayDx=dFdx(rd),rayDy=dFdy(rd);
+ float footprint=max(length(rayDx),length(rayDy));
+ if(uProbe==1){fragColor=vec4(.5+.5*rd,1);return;}
+ float closest=FAR,edgeWorld=0.;int id=-1;vec3 normal=vec3(0.);
+ for(int i=0;i<10;i++){float t=sphere(ro,rd,uSpheres[i]);if(t<closest){closest=t;id=i;}}
+ for(int i=0;i<32;i++){vec3 bc;float t=triangle(ro,rd,uA[i],uC[i],uD[i],bc);if(t<closest){closest=t;id=10+i/4;vec3 ab=uC[i]-uA[i],ac=uD[i]-uA[i],cb=uD[i]-uC[i],N=cross(ab,ac);float area=length(N);normal=N/area;vec3 heights=area/vec3(length(cb),length(ac),length(ab));edgeWorld=min(min(bc.x*heights.x,bc.y*heights.y),bc.z*heights.z);}}
+ if(uMoving==1){float t=movingHit(ro,rd);if(t<closest){closest=t;id=100;}}
+ if(uProbe==2){fragColor=vec4(id==100?vec3(1,0,0):id>=0?vec3(0,1,0):vec3(0,0,1),1);return;}
+ float emit=lab;
+ if(id==100&&uSourceLab==0){vec4 W=vec4(uBallVelocity,1.)/sqrt(dot(uBallVelocity,uBallVelocity)-1.);emit=dm(K,W);}
+ float den=(emit<0.?-1.:1.)*max(abs(emit),1e-8),g=clamp(cam/den,-1e4,1e4),shift=uSpectral==1?abs(g):1.;
+ if(uProbe==3){fragColor=vec4(atan(g)/PI+.5,cam<0.?0.:1.,emit<0.?0.:1.,1);return;}
+ vec3 col;float diagnostic=0.;
+ if(id<0)col=sky(rd,shift);
+ else{col=KelvinToRgb(6500.*shift);vec3 hit=ro+closest*rd;
+  if(id<10||id==100){vec3 center=id==100?uBall.xyz+uBallVelocity*(uPosition.w-closest):uSpheres[clamp(id,0,9)].xyz;normal=normalize(hit-center);if(uLines==1){float lo=atan(normal.z,normal.x),la=asin(clamp(normal.y,-1.,1.)),x=abs(sin(lo*6.)),y=abs(sin(la*6.));float radius=id==100?uBall.w:uSpheres[clamp(id,0,9)].w;float dn=footprint*closest/radius/max(.15,abs(dot(normal,rd))),wx=max(.015,6.*dn/max(.15,sqrt(1.-normal.y*normal.y))),wy=max(.015,6.*dn);diagnostic=max(1.-smoothstep(.018,.018+wx,x),1.-smoothstep(.018,.018+wy,y));}}
+  else if(uLines==1){float width=footprint*closest/max(.15,abs(dot(normal,rd)));diagnostic=1.-smoothstep(.012,.012+1.05*width,edgeWorld);}
+ }
+ float boost=uSpectral==1?pow(shift,4.):1.;if(uLimit==1&&uSpectral==1)boost=clamp(boost,uBounds.x,uBounds.y);col*=boost;
+ if(uInvert==1&&cam*emit<0.)col=anti(col);
+ vec3 mapped=tone(col);if(id>=0)mapped*=1.-.7*diagnostic;
+ if(uSpaceGrid!=0){
+  float alpha=worldGridAlpha(ro,rd,rayDx,rayDy,closest);
+  float gg=clamp(cam/max(lab,1e-8),-1e4,1e4),gs=uSpectral==1?abs(gg):1.;
+  float gb=uSpectral==1?pow(gs,4.):1.;if(uLimit==1&&uSpectral==1)gb=clamp(gb,uBounds.x,uBounds.y);
+  vec3 gridColor=KelvinToRgb(6500.*gs)*vec3(.56,.88,1.)*.7*gb;
+  if(uInvert==1&&gg<0.)gridColor=anti(gridColor);
+  mapped=mix(mapped,tone(gridColor),alpha);
+ }
+ if(uGrid==1&&uOptics==0&&uZ!=0.){float z=rho*2.,a=max(fwidth(z),1e-5),d=abs(fract(z+.5)-.5);float rings=1.-smoothstep(.3*a,1.3*a,d);mapped=mix(mapped,vec3(.34,.58,.57),.22*rings);}
+ fragColor=vec4(mapped,1);
+}
+</script><script>
+'use strict';
+// Components (x,y,z,t), metric (+,+,+,-). B=[U,D,N1,N2], signature=(eps,-eps,1,1). Non-unit bridges are explicit.
+const NormalSky=(()=>{
+ const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2]-a[3]*b[3],dot3=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),md=(a,b)=>-a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+ const add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,k)=>a.map(v=>v*k),lin=(a,k,b,l)=>a.map((v,i)=>v*k+b[i]*l),sub=(a,b)=>lin(a,1,b,-1);
+ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ const unit=v=>{const r=Math.hypot(...v);if(!(r>1e-14))throw Error('方向退化');return mul(v,1/r);};
+ const combine=(basis,c)=>basis[0].map((_,i)=>basis.reduce((s,v,j)=>s+c[j]*v[i],0));
+ const identity=()=>[[1,0,0],[0,1,0],[0,0,1]],SNAP=2e-14,CONTROL_MIN=1e-4,STRICT_MAX=Math.sqrt(1e-6/(64*Number.EPSILON));
+ const cp=c=>({...c,eps:c.eps??1,X:c.X.slice(),B:c.B.map(v=>v.slice()),Q:c.Q.map(v=>v.slice()),J:c.J.map(v=>v.slice()),TQ:(c.TQ??identity()).map(v=>v.slice()),bridge:c.bridge?{...c.bridge}:null});
+ function spaceHeadInitial(c,sigma=1){const o=cp(c);o.Q=[[sigma,0,0],[0,1,0],[0,0,sigma]];o.J=[[1,0,0],[0,sigma,0],[0,0,1]];o.sigma=sigma;o.lastSign=sigma;o.guard='';return o;}
+ function initial(sigma=1,eps=1,beta=null,timeSign=1){
+  let eta,U,D;
+  if(eps===1){eta=beta===null?.25:Math.atanh(1/beta);U=[0,0,-Math.cosh(eta),timeSign*Math.sinh(eta)];D=[0,0,-timeSign*Math.sinh(eta),Math.cosh(eta)];}
+  else{eta=Math.atanh(beta??0);U=[0,0,-Math.sinh(eta),timeSign*Math.cosh(eta)];D=[0,0,-Math.cosh(eta),timeSign*Math.sinh(eta)];}
+  return headInitial({eps,X:[0,2,12,0],B:[U,D,[1,0,0,0],[0,1,0,0]],Q:identity(),J:identity(),TQ:identity(),s:0,sigma,lastSign:sigma,crossings:0,causalCrossings:0,repairs:0,lensRepairs:0,steps:0,bridge:null,armed:true,guard:''},sigma);
+ }
+ function cleanQ(q){const r=unit(q[0]),v=unit(lin(q[1],1,r,-dot3(q[1],r)));return[r,v,unit(cross(r,v))];}
+ function cleanJ(j){return repairLorentz(j,[-1,1,1],true);}
+ function gramNormal(j){let e=0;for(let i=0;i<3;i++)for(let k=0;k<3;k++)e=Math.max(e,Math.abs(md(j[i],j[k])-(i===k?[-1,1,1][i]:0)));return e;}
+ function gramBody(c){let e=0;for(let i=0;i<4;i++)for(let k=0;k<4;k++)e=Math.max(e,Math.abs(dot(c.B[i],c.B[k])-(i===k?[c.eps??1,-(c.eps??1),1,1][i]:0)));return e;}
+ function bodyTolerance(c){const m=Math.max(1,...c.B.flat().map(Math.abs));return Math.max(2e-9,64*Number.EPSILON*m*m);}
+ function validBody(c){const ep=c.eps??1,t=ep===1?c.B[1]:c.B[0],tol=bodyTolerance(c);return [1,-1].includes(ep)&&[...c.X,...c.B.flat(),c.s].every(Number.isFinite)&&c.X.every(x=>Math.abs(x)<1e18)&&(ep===-1?Math.abs(t[3])>=.999999:t[3]>0)&&tol<=4e-6&&gramBody(c)<=8*tol;}
+ function exact(c,ds,A,qOverride=null){
+  if(c.bridge)throw Error('非单位桥接段不能执行单位标架费米更新');
+  const ep=c.eps??1,o=cp(c),U=c.B[0],a=combine(c.B.slice(1),A),q=qOverride===null?(-ep*A[0]*A[0]+A[1]*A[1]+A[2]*A[2]):qOverride,p=q/ep,z=p*ds*ds;let S,C;
+  if(Math.abs(z)<1e-5){S=ds*(1-z/6+z*z/120-z*z*z/5040);C=ds*ds*(.5-z/24+z*z/720-z*z*z/40320);}
+  else if(p>0){const w=Math.sqrt(p);S=Math.sin(w*ds)/w;C=2*Math.sin(w*ds/2)**2/p;}
+  else{const w=Math.sqrt(-p);S=Math.sinh(w*ds)/w;C=2*Math.sinh(w*ds/2)**2/(-p);}
+  const delta=lin(U,S,a,C);o.X=add(c.X,delta);o.B[0]=lin(U,1-p*C,a,S);
+  for(let j=0;j<3;j++)o.B[j+1]=lin(c.B[j+1],1,delta,-[-ep,1,1][j]*A[j]/ep);o.s+=ds;o.steps=(c.steps??0)+1;return stabilize(o);
+ }
+ // Q is ONLY a compact coordinate for the central null direction. It is NOT the normal lens frame.
+ function spaceCompact(c,mode=0){
+  if(mode===0){let z=c.Q[2][2],b=c.Q[2].slice(0,2);if(Math.abs(z)<SNAP){z=0;b=unit(b);}return{z,b,R:c.Q[0].slice(),V:c.Q[1].slice(),sigma:Math.sign(z)};}
+  const [h,r,v]=c.J,z=c.sigma/h[0],b=[-h[1]/h[0],-h[2]/h[0]];
+  return{z,b,R:[r[1]+r[0]*b[0],r[2]+r[0]*b[1],r[0]*z],V:[v[1]+v[0]*b[0],v[2]+v[0]*b[1],v[0]*z],sigma:c.sigma};
+ }
+ // Regular normal triad: H=(T-b.N)/|z|; E_i=e_i-(e_i.U/z)k_center.
+ // It is singular at z=0, never replaced by a T-perp screen.
+ function spaceNormalCoefficients(c,mode=0){if(mode===1)return c.J.map(v=>v.slice());const p=compact(c,0),t=Math.abs(p.z);if(t===0)return null;
+  const H=[1/t,-p.b[0]/t,-p.b[1]/t];
+  const project=e=>{const a=e[2]/p.z;return[a,e[0]-a*p.b[0],e[1]-a*p.b[1]];};return[H,project(p.R),project(p.V)];
+ }
+ function spaceNormalWorld(c,mode=0){const j=normalCoefficients(c,mode);return j?{H:combine(c.B.slice(1),j[0]),R:combine(c.B.slice(1),j[1]),V:combine(c.B.slice(1),j[2])}:null;}
+ // Stable analytic normalization of the actual hyperbolic lens rays.
+ // K_sigma(q)=sigma U-cosh(rho)H+sinh(rho)/rho*(qx R+qy V).
+ // Multiplication by |z| and division by positive A avoids divergent components.
+ function rayCoefficients(p,x,y){if(p.z===0)return{u:0,n1:p.b[0],n2:p.b[1],A:1,rho:Math.hypot(x,y),boundary:true};const rho=Math.hypot(x,y),ch=Math.cosh(rho),f=rho<1e-6?1+rho*rho/6:Math.sinh(rho)/rho,sg=Math.sign(p.z),A=ch-sg*f*(x*p.R[2]+y*p.V[2]),t=Math.abs(p.z),k=t*f/A;
+  if(!(A>0))throw Error('缩放因子不为正');return{u:p.z/A,n1:p.b[0]+k*(x*p.R[0]+y*p.V[0]),n2:p.b[1]+k*(x*p.R[1]+y*p.V[1]),A,rho,boundary:false};
+ }
+ function spaceRay(c,x=0,y=0,mode=0){const p=compact(c,mode),v=rayCoefficients(p,x,y),K=combine(c.B,[v.u,-1,v.n1,v.n2]),Eemit=-K[3];return{...v,K,rd:unit(K.slice(0,3)),Ecam:v.u,Eemit,g:v.u/Eemit,sigma:p.sigma,canonicalScale:p.z===0?null:v.A/Math.abs(p.z)};}
+ function spacePixelRay(c,x,y,w,h,opts){return ray(c,(2*x-w)/w*opts.extent,(2*y-h)/w*opts.extent,opts.mode);}
+ function spacePixelFrame(c,x=0,y=0,mode=0){const n=normalCoefficients(c,mode);if(!n)return null;const rho=Math.hypot(x,y),ch=Math.cosh(rho),sh=Math.sinh(rho),a=rho?x/rho:0,b=rho?y/rho:0,D=lin(n[1],a,n[2],b),H=lin(n[0],ch,D,-sh),R=add(n[1],lin(D,(ch-1)*a,n[0],-sh*a)),V=add(n[2],lin(D,(ch-1)*b,n[0],-sh*b));return{coefficients:[H,R,V],H:combine(c.B.slice(1),H),R:combine(c.B.slice(1),R),V:combine(c.B.slice(1),V)};}
+ function compactYaw(c,a){const o=cp(c),[r,v,f]=c.Q;o.Q=cleanQ([lin(r,Math.cos(a),f,-Math.sin(a)),v,lin(r,Math.sin(a),f,Math.cos(a))]);return o;}
+ function compactPitch(c,a){const o=cp(c),[r,v,f]=c.Q;o.Q=cleanQ([r,lin(v,Math.cos(a),f,-Math.sin(a)),lin(v,Math.sin(a),f,Math.cos(a))]);return o;}
+ function boost(c,x,y){const a=Math.hypot(x,y);if(a===0)return cp(c);const o=cp(c),[h,r,v]=c.J,D=lin(r,x/a,v,y/a),ch=Math.cosh(a),sh=Math.sinh(a);o.J=cleanJ([lin(h,ch,D,-sh),add(r,lin(D,(ch-1)*x/a,h,-sh*x/a)),add(v,lin(D,(ch-1)*y/a,h,-sh*y/a))]);return o;}
+ function spaceHeadLook(c,dx,up,width,opts){const k=(opts.mode===0?2*Math.PI*opts.turns:opts.rapidity)/Math.max(1,width),steps=Math.max(1,Math.ceil(Math.max(Math.abs(dx*k),Math.abs(up*k))/.06));if(steps>3000)throw Error('鼠标位移过大');let o=cp(c);o.guard='';
+  for(let i=0;i<steps;i++){
+   if(opts.mode===0){o=compactPitch(compactYaw(o,dx*k/steps),up*k/steps);const z=compact(o,0).z,s=Math.sign(z);if(s&&s!==o.lastSign){o.crossings++;o.lastSign=s;}if(s)o.sigma=s;}
+   else{const n=boost(o,dx*k/steps,up*k/steps);if(Math.max(...n.J.flat().map(Math.abs))>STRICT_MAX||gramNormal(n.J)>8*normalTolerance(n.J)){o.guard='严格镜头已接近双精度条件数护栏；已保留最后有效状态，可反拖返回，不换片。';break;}o=n;}
+  }return o;
+ }
+ function spaceRoll(c,a,mode=0){const o=cp(c),ch=Math.cos(a),sh=Math.sin(a);if(mode===0){const [r,v,f]=c.Q;o.Q=cleanQ([lin(r,ch,v,sh),lin(v,ch,r,-sh),f]);}else{const [h,r,v]=c.J;o.J=cleanJ([h,lin(r,ch,v,sh),lin(v,ch,r,-sh)]);}return o;}
+ function spaceSwitchMode(c,from,to){if(from===to)return cp(c);const o=cp(c),p=compact(c,from);if(to===1){if(Math.abs(p.z)<1/STRICT_MAX)throw Error('太接近奇异边界，无法进入有限严格标架；请离开边界或重置镜头。');o.J=cleanJ(normalCoefficients(c,0));o.sigma=Math.sign(p.z);o.lastSign=o.sigma;}
+  else{o.Q=cleanQ([p.R,p.V,[...p.b,p.z]]);o.sigma=p.sigma;o.lastSign=p.sigma;}o.guard='';return o;
+ }
+ function input(keys,h=1){return[(+keys.has('KeyS')-+keys.has('KeyW'))*h,(+keys.has('KeyD')-+keys.has('KeyA'))*h,(+keys.has('KeyR')-+keys.has('KeyF'))*h];}
+ function spaceControl(c,local,mode=0){const p=compact(c,mode),j=normalCoefficients(c,mode);if(!j||Math.abs(p.z)<CONTROL_MIN)return{blocked:true,coefficients:[0,0,0],acceleration:[0,0,0,0],reason:'单位镜头轴在边界发散；该数值窄区仅惯性推进，推力暂缓。'};const A=combine(j,local);return{blocked:false,coefficients:A,acceleration:combine(c.B.slice(1),A),q:md(local,local)};}
+ function spaceProject(c,d,w,h,opts){const K=[...unit(d),-1],wu=dot(K,c.B[0]),p=compact(c,opts.mode);if(p.z===0||wu===0||Math.sign(wu)!==p.sigma)return null;const n=normalWorld(c,opts.mode),H=lin(c.B[0],p.sigma,K,-1/Math.abs(wu)),x=-dot(H,n.R),y=-dot(H,n.V),r=Math.hypot(x,y),rho=Math.asinh(r),f=r<1e-10?1:rho/r,qx=x*f,qy=y*f;return{x:w*(.5+qx/(2*opts.extent)),y:h*.5-w*qy/(2*opts.extent),qx,qy,visible:Math.abs(qx)<=opts.extent&&Math.abs(qy)<=opts.extent*h/w};}
+ function movingRoots(ro,rd,t,ball){const O=sub(ro,add(ball.origin,mul(ball.velocity,t))),D=add(rd,ball.velocity),a=dot3(D,D),b=2*dot3(O,D),cc=dot3(O,O)-ball.radius**2,disc=b*b-4*a*cc;if(disc<0||a<1e-14)return[];const root=Math.sqrt(Math.max(0,disc)),q=-.5*(b+(b<0?-root:root)),arr=Math.abs(q)>1e-14?[q/a,cc/q]:[-b/(2*a)];return arr.filter(x=>x>1e-4&&Number.isFinite(x)).sort((x,y)=>x-y);}
+ function movingU(ball){return mul([...ball.velocity,1],1/Math.sqrt(dot3(ball.velocity,ball.velocity)-1));}
+ function sgRatio(a,b){const den=(b<0?-1:1)*Math.max(Math.abs(b),1e-8);return Math.max(-1e4,Math.min(1e4,a/den));}
+ // -------- Numerical maintenance of transported frames, NOT a new lab-axis frame. --------
+ // Boost to the CURRENT time axis's rest coordinates, orthonormalize the existing
+ // spatial axes there, and boost back. No axis is chosen from a fixed lab direction.
+ function repairLorentz(basis,signature,force=false){
+  const dim=signature.length,ti=signature.indexOf(-1),isNormal=dim===3;
+  const inner=(a,b)=>a.reduce((s,x,i)=>s+x*b[i]*(isNormal?(i===0?-1:1):(i===3?-1:1)),0);
+  let error=0;for(let i=0;i<dim;i++)for(let j=0;j<dim;j++)error=Math.max(error,Math.abs(inner(basis[i],basis[j])-(i===j?signature[i]:0)));
+  const m=Math.max(1,...basis.flat().map(Math.abs)),round=64*Number.EPSILON*m*m;
+  if(!basis.flat().every(Number.isFinite)||round>4e-6||error>Math.max(1e-3,round*64))throw Error('标架不是可安全修复的小漂移；拒绝归一化，不强行更改因果类型。');
+  if(!force&&error<=Math.max(2e-12,round*.05))return basis.map(v=>v.slice());
+  const tSlot=isNormal?0:3,spatial=isNormal?[1,2]:[0,1,2],st=basis[ti][tSlot]<0?-1:1;
+  const w=spatial.map(i=>basis[ti][i]*st),gamma=Math.hypot(1,...w),rest=[],out=basis.map(v=>v.slice());
+  out[ti]=isNormal?[st*gamma,...mul(w,st)]:[...mul(w,st),st*gamma];
+  for(let j=0;j<dim;j++)if(j!==ti){
+   const old=basis[j];let e=spatial.map((i,k)=>old[i]-w[k]*old[tSlot]/(gamma+1));
+   // Reorthogonalize twice in a positive-definite space, retaining orientation.
+   for(let pass=0;pass<2;pass++)for(const r of rest)e=lin(e,1,r,-dot3(e,r));
+   e=unit(e);rest.push(e);const t=dot3(w,e),v=add(e,mul(w,t/(gamma+1)));
+   out[j]=isNormal?[t,...v]:[...v,t];
+  }
+  const relative=Math.max(...out.flat().map((v,i)=>Math.abs(v-basis.flat()[i])))/m;
+  if(relative>Math.max(1e-4,round*64))throw Error('标架修正过大，不接受可疑重构。');
+  return out;
+ }
+ function normalTolerance(j){const m=Math.max(1,...j.flat().map(Math.abs));return Math.max(2e-10,64*Number.EPSILON*m*m);}
+ function stabilize(c,force=false){
+  if(c.bridge)return c;const ep=c.eps??1,err=gramBody(c),m=Math.max(1,...c.B.flat().map(Math.abs));
+  if(!force&&err<=Math.max(2e-12,4*Number.EPSILON*m*m)&&(c.steps??0)%128!==0)return c;
+  if(!force&&err<2e-14)return c;
+  const o=cp(c);o.B=repairLorentz(c.B,[ep,-ep,1,1],true);o.repairs=(c.repairs??0)+1;return o;
+ }
+ function repairState(c){let o=stabilize(cp(c),true);if(!o.bridge){o.Q=cleanQ(o.Q);o.TQ=cleanQ(o.TQ);o.J=cleanJ(o.J);o.lensRepairs=(o.lensRepairs??0)+1;}return o;}
+ const sign=x=>x<0?-1:1;
+ function headInitial(c,sigma=1){if(c.bridge)throw Error('桥接中暂不能重置镜头；完成后再试。');if((c.eps??1)===1)return spaceHeadInitial(c,sigma);const o=cp(c);o.TQ=identity();o.guard='';return o;}
+ function compact(c,mode=0){if((c.eps??1)===-1)return{z:sign(c.B[0][3]),b:[0,0],R:[1,0,0],V:[0,1,0],sigma:sign(c.B[0][3]),timelike:true};return spaceCompact(c,mode);}
+ function normalCoefficients(c,mode=0){return (c.eps??1)===1?spaceNormalCoefficients(c,mode):[c.TQ[2],c.TQ[0],c.TQ[1]].map(a=>[a[2],a[0],a[1]]);}
+ function normalWorld(c,mode=0){return (c.eps??1)===1?spaceNormalWorld(c,mode):timeFrame(c);}
+ function canonical(c){return (c.eps??1)===1?{T:c.B[1],R:c.B[2],V:c.B[3],F:c.B[0]}:{T:mul(c.B[0],sign(c.B[0][3])),R:c.B[2],V:c.B[3],F:c.B[1]};}
+ function timeFrame(c){const b=canonical(c),sp=[b.R,b.V,b.F],q=c.TQ??identity();return{T:b.T,H:b.T,R:combine(sp,q[0]),V:combine(sp,q[1]),F:combine(sp,q[2])};}
+ function eased(x){return x*x*(3-2*x);}
+ function tangent(c){if(!c.bridge)return c.B[0].slice();const b=c.bridge,z=eased(b.elapsed/b.duration);return lin(b.U0,1-z,b.U1,z);}
+ function speedFrom(U){return Math.abs(U[3])<1e-14?Infinity:Math.hypot(...U.slice(0,3))/Math.abs(U[3]);}
+ // Stable boost that maps one future timelike unit vector to another.
+ function boostVector(T0,T1,v,fraction=1){
+  const g=Math.max(1,-dot(T0,T1)),eta=Math.acosh(g);if(eta<1e-7)return v.slice();
+  const E=mul(lin(T1,1,T0,-g),1/Math.sinh(eta)),a=-dot(v,T0),b=dot(v,E),ch=Math.cosh(fraction*eta),sh=Math.sinh(fraction*eta);
+  return add(v,lin(T0,(ch-1)*a+sh*b,E,sh*a+(ch-1)*b));
+ }
+ function opticalState(c){
+  if(!c.bridge)return c;const b=c.bridge,f=eased(b.elapsed/b.duration),o=cp(c);o.bridge=null;
+  o.B=b.sourceB.map(v=>boostVector(b.T0,b.T1,v,f));o.eps=b.sourceEps;return o;
+ }
+ function opticalDescriptor(c,mode=0){const o=opticalState(c),sp=(o.eps??1)===1;return{state:o,spacelike:sp,mode:c.bridge?.sourceMode??mode,base:sp?canonical(o):timeFrame(o),tangent:tangent(c)};}
+ // Numerically stable application of a large Lorentz boost to a null ray.
+ // Used only beyond gamma=32; it does not change the hyperbolic image coordinates.
+ function restAxes(base){
+  const w=base.T.slice(0,3),g=base.T[3],out=[];
+  for(const v of [base.R,base.V,base.F]){let e=v.slice(0,3).map((x,i)=>x-w[i]*v[3]/(g+1));for(const a of out)e=lin(e,1,a,-dot3(e,a));out.push(unit(e));}return out;
+ }
+ function stableNull(base,n){
+  const g=base.T[3],w=base.T.slice(0,3),s=Math.hypot(...w),nw=unit(combine(restAxes(base),n));if(s<1e-14)return [...nw,-1];
+  const axis=mul(w,1/s),d=sub(nw,axis),delta=dot3(d,d)/2,small=1/(g+s);
+  return [...add(d,mul(axis,small-(g-1)*delta)),-(small+s*delta)];
+ }
+ function ray(c,x=0,y=0,mode=0){
+  if(c.bridge){const o=opticalState(c),r=ray(o,x,y,c.bridge.sourceMode),Ecam=dot(r.K,tangent(c));return{...r,Ecam,g:Ecam/r.Eemit,bridge:true};}
+  if((c.eps??1)===1){const r=spaceRay(c,x,y,mode),base=canonical(c);if(base.T[3]>32){r.K=stableNull(base,[r.n1,r.n2,r.u]);r.rd=unit(r.K.slice(0,3));r.Eemit=-r.K[3];r.g=r.Ecam/r.Eemit;}return r;}
+  const f=timeFrame(c),n=unit([x,y,1]),K=f.T[3]>32?stableNull(f,n):add(mul(f.T,-1),combine([f.R,f.V,f.F],n)),Ecam=sign(c.B[0][3]),Eemit=-K[3];
+  return{K,rd:unit(K.slice(0,3)),Ecam,Eemit,g:Ecam/Eemit,sigma:Ecam,rho:Math.hypot(x,y),canonicalScale:1,timelike:true};
+ }
+ function pixelRay(c,x,y,w,h,opts){const source=opticalState(c),extent=(source.eps??1)===1?opts.extent:Math.tan(55*Math.PI/180);return ray(c,(2*x-w)/w*extent,(2*y-h)/w*extent,opts.mode);}
+ function pixelFrame(c,x=0,y=0,mode=0){
+  if(c.bridge)return null;if((c.eps??1)===1)return spacePixelFrame(c,x,y,mode);
+  const f=timeFrame(c),n=unit([x,y,1]),N=combine([f.R,f.V,f.F],n),sum=add(N,f.F);
+  return{H:f.T,F:N,R:lin(f.R,1,sum,-n[0]/(1+n[2])),V:lin(f.V,1,sum,-n[1]/(1+n[2]))};
+ }
+ function headLook(c,dx,up,width,opts){
+  if(c.bridge){const o=cp(c);o.guard='非单位桥接中锁定源镜头；完成后恢复转头。';return o;}
+  if((c.eps??1)===1){const o=spaceHeadLook(c,dx,up,width,opts);if(opts.mode===1)o.lensRepairs=(c.lensRepairs??0)+1;return o;}
+  if(![dx,up,width].every(Number.isFinite)||width<=0)throw Error('鼠标参数非法');
+  const k=2*Math.PI*(opts.sensitivity??2)/width,o=cp(c),yaw=dx*k,pitch=up*k;
+  let [r,v,f]=o.TQ;[r,f]=[lin(r,Math.cos(yaw),f,-Math.sin(yaw)),lin(r,Math.sin(yaw),f,Math.cos(yaw))];
+  o.TQ=cleanQ([r,lin(v,Math.cos(pitch),f,-Math.sin(pitch)),lin(v,Math.sin(pitch),f,Math.cos(pitch))]);return o;
+ }
+ function roll(c,a,mode=0){if(c.bridge)return cp(c);if((c.eps??1)===1){const o=spaceRoll(c,a,mode);if(mode===1)o.lensRepairs=(c.lensRepairs??0)+1;return o;}const o=cp(c),[r,v,f]=c.TQ;o.TQ=cleanQ([lin(r,Math.cos(a),v,Math.sin(a)),lin(v,Math.cos(a),r,-Math.sin(a)),f]);return o;}
+ function switchMode(c,from,to){if(c.bridge)throw Error('请在桥接完成后切换类空镜头规则。');if((c.eps??1)===-1)return cp(c);return spaceSwitchMode(c,from,to);}
+ function control(c,local,mode=0){
+  if(!Array.isArray(local)||local.length!==3||!local.every(Number.isFinite))throw Error('推力需要三个有限分量');
+  if(c.bridge)return{blocked:true,coefficients:[0,0,0],acceleration:[0,0,0,0],q:0,reason:'非单位桥接中暂停推力。'};
+  if((c.eps??1)===1)return spaceControl(c,local,mode);
+  const q=c.TQ??identity(),v=add(lin(q[0],local[1],q[1],local[2]),mul(q[2],-local[0])),A=[v[2],v[0],v[1]];
+  return{blocked:false,coefficients:A,acceleration:combine(c.B.slice(1),A),q:dot3(local,local)};
+ }
+ // This is the source view as a null center and screen representatives in T-perp.
+ // Changing representatives by multiples of K changes no screen in K-perp / span(K).
+ function viewAxes(c,mode=0){
+  if(c.bridge){const b=c.bridge,f=eased(b.elapsed/b.duration),a=b.view0,o={};for(const k of ['T','K','R','V'])o[k]=boostVector(b.T0,b.T1,a[k],f);return o;}
+  const T=canonical(c).T;if((c.eps??1)===-1){const f=timeFrame(c);return{T,K:lin(f.F,1,T,-1),R:f.R,V:f.V};}
+  const p=compact(c,mode),sp=[c.B[2],c.B[3],c.B[0]];return{T,K:combine(c.B,[p.z,-1,...p.b]),R:combine(sp,p.R),V:combine(sp,p.V)};
+ }
+ function matchView(c,axes,mode=0){
+  const o=cp(c),base=canonical(c),sp=[base.R,base.V,base.F],omega=dot(axes.K,base.T);
+  if(!(omega>0))throw Error('镜头接续没有过去指向中心光线');
+  const K=mul(axes.K,1/omega),F=add(K,base.T);
+  const screen=v=>lin(v,1,K,-dot(v,base.T)); // K·T=1: gauge into target T-perp.
+  const R=screen(axes.R),V=screen(axes.V),q=[R,V,F].map(v=>sp.map(w=>dot(v,w)));
+  const qClean=cleanQ(q);if(dot3(qClean[2],q[2])<0)throw Error('桥接屏幕定向不一致；拒绝偷偷翻转视线');
+  if((o.eps??1)===-1){o.TQ=qClean;return o;}
+  o.Q=qClean;const p=spaceCompact(o,0);o.sigma=p.sigma||o.lastSign;o.lastSign=o.sigma;
+  if(mode===1){if(Math.abs(p.z)<1/STRICT_MAX)throw Error('目标中心过近零能边界，无法接入有限严格镜头；请先改变视线。');o.J=cleanJ(spaceNormalCoefficients(o,0));}
+  return o;
+ }
+ function betaDot(c,a){const U=c.B[0],k=Math.hypot(...U.slice(0,3)),t=U[3];if(k<1e-12||Math.abs(t)<1e-12)return 0;return dot3(U.slice(0,3),a.slice(0,3))/(k*Math.abs(t))-k*sign(t)*a[3]/(t*t);}
+ function startBridge(c,duration,mode=0){
+  if(c.bridge||!(duration>0)||!Number.isFinite(duration))throw Error('桥接时长或状态非法');
+  const o=stabilize(cp(c),true),U0=o.B[0],k=Math.hypot(...U0.slice(0,3)),st=sign(U0[3]);
+  if(k<1e-8||Math.abs(U0[3])<1e-8)throw Error('桥接只适用于光速邻域的非退化切向量');
+  const U1=[...mul(U0.slice(0,3),Math.abs(U0[3])/k),st*k],C0=canonical(o),end=cp(o);end.eps=-(c.eps??1);
+  if(end.eps===-1){const T1=mul(U1,st);end.B=[U1,boostVector(C0.T,T1,C0.F),boostVector(C0.T,T1,C0.R),boostVector(C0.T,T1,C0.V)];}
+  else{const T1=mul(U0,st),sp=[C0.R,C0.V,C0.F],f=unit(sp.map(v=>dot(U1,v)));let r=lin([1,0,0],1,f,-f[0]);if(Math.hypot(...r)<1e-6)r=lin([0,1,0],1,f,-f[1]);r=unit(r);const v=unit(cross(f,r));end.B=[U1,T1,combine(sp,r),combine(sp,v)];}
+  const repaired=stabilize(end,true);if(!validBody(repaired))throw Error('桥接终点不在可安全表示的单位标架区间');
+  const T1=canonical(repaired).T,view0=viewAxes(o,mode),last={};for(const key of ['T','K','R','V'])last[key]=boostVector(C0.T,T1,view0[key]);
+  // Verify target chart can be expressed BEFORE committing to a bridge.
+  const matched=matchView(repaired,last,mode);
+  o.bridge={elapsed:0,duration,U0:U0.slice(),U1:U1.slice(),X0:o.X.slice(),s0:o.s,sourceEps:o.eps,sourceMode:mode,sourceB:o.B.map(v=>v.slice()),T0:C0.T.slice(),T1:T1.slice(),view0,endB:matched.B.map(v=>v.slice()),endEps:matched.eps,endQ:matched.Q.map(v=>v.slice()),endJ:matched.J.map(v=>v.slice()),endTQ:matched.TQ.map(v=>v.slice()),endSigma:matched.sigma};
+  o.armed=false;return o;
+ }
+ function bridgeStep(c,ds){
+  const o=cp(c),b=o.bridge;if(!b||!(ds>=0)||!Number.isFinite(ds))throw Error('桥接步参数非法');b.elapsed=Math.min(b.duration,b.elapsed+ds);
+  const z=b.elapsed/b.duration,I=z*z*z-.5*z*z*z*z;o.X=add(b.X0,mul(lin(b.U0,z-I,b.U1,I),b.duration));o.s=b.s0+b.elapsed;
+  if(z>=1-1e-12){o.B=b.endB.map(v=>v.slice());o.eps=b.endEps;o.Q=b.endQ.map(v=>v.slice());o.J=b.endJ.map(v=>v.slice());o.TQ=b.endTQ.map(v=>v.slice());o.sigma=b.endSigma;o.lastSign=o.sigma;o.bridge=null;o.armed=false;o.causalCrossings=(c.causalCrossings??0)+1;return o;}return o;
+ }
+ // Compact distance to the null cone. This avoids subtracting beta from 1 after beta has lost precision.
+ function causalGap(U){const k=Math.hypot(...U.slice(0,3)),t=Math.abs(U[3]),d=k+t;return d>0?Math.abs(k-t)/d:Infinity;}
+ // Glue the two unit hyperboloids at their common null infinity. No non-unit segment is inserted:
+ // X and the path parameter stay fixed while U is replaced by the lab-dual point on the other sheet.
+ // We reuse the already-tested endpoint/view construction of startBridge, then discard its interpolation.
+ function flipCausal(c,mode=0){
+  if(c.bridge)throw Error('不能在非单位过渡中再次翻面');
+  const X=c.X.slice(),s0=c.s,oldCross=c.causalCrossings??0,b=startBridge(c,1,mode),o=bridgeStep(b,1);
+  o.X=X;o.s=s0;o.bridge=null;o.armed=false;o.causalCrossings=oldCross+1;o.guard='';
+  return stabilize(o,true);
+ }
+ function advance(c,ds,local,mode=0,options={}){
+  if(!Number.isFinite(ds)||ds<0)throw Error('推进时间必须是有限非负数');
+  const opts={allowBridge:false,bridgeBand:.004,...options};let o=cp(c),remaining=ds,iterations=0,blocked=false,reason='',halted=false;
+  while(remaining>Math.max(1e-13,ds*Number.EPSILON*4)){
+   if(++iterations>12000){reason='本次推进超出交互运算预算；保留已完成部分。减小播放倍率或推力后可继续。';halted=true;break;}
+   // Legacy bridge states are only accepted for backwards-compatible debug snapshots; normal interaction never creates one.
+   if(o.bridge){const h=Math.min(remaining,o.bridge.duration-o.bridge.elapsed);o=bridgeStep(o,h);remaining-=h;continue;}
+   const ctl=control(o,local,mode),A=ctl.coefficients,force=Math.hypot(...A),gap0=causalGap(o.B[0]);
+   blocked=blocked||(ctl.blocked&&local.some(v=>v!==0));if(blocked)reason=ctl.reason;
+   if(force<1e-12||gap0>1.5*opts.bridgeBand)o.armed=true;
+   const h=force===0?remaining:Math.min(remaining,.025/(1+.3*force));
+   let next;
+   try{next=exact(o,h,A,ctl.blocked?0:ctl.q);}catch(e){reason=e.message+'；保留最后有效状态，可反向操作。';halted=true;break;}
+   const gap1=causalGap(next.B[0]),approaching=gap1<gap0*(1-1e-10);
+   if(opts.allowBridge&&o.armed&&force>1e-12&&approaching&&gap1<=opts.bridgeBand){
+    // Land on the threshold rather than overshooting it, then glue to the face-to-face point.
+    let lo=0,hi=h,at=o;
+    if(gap0>opts.bridgeBand){for(let n=0;n<36;n++){const mid=(lo+hi)/2,cand=exact(o,mid,A,ctl.blocked?0:ctl.q),g=causalGap(cand.B[0]);if(g>opts.bridgeBand){lo=mid;at=cand;}else hi=mid;}if(lo>0){o=at;remaining-=lo;}}
+    o=flipCausal(o,mode);continue;
+   }
+   if(!validBody(next)){reason='标架真实条件数已超出浮点精度预算；保留最后有效状态，可反向操作。';halted=true;break;}
+   o=next;remaining-=h;
+  }
+  o.guard=halted?reason:'';return{o,blocked,reason,halted,consumed:ds-remaining};
+ }
+ function project(c,d,w,h,opts){
+  if(c.bridge){const b=c.bridge,K=[...unit(d),-1],inverse=boostVector(b.T1,b.T0,K,eased(b.elapsed/b.duration)),source=cp(c);source.bridge=null;return project(source,unit(inverse.slice(0,3)),w,h,opts);}
+  if((c.eps??1)===1)return spaceProject(c,d,w,h,opts);
+  const f=timeFrame(c),K=[...unit(d),-1],z=dot(K,f.F);if(z<=0)return null;const qx=dot(K,f.R)/z,qy=dot(K,f.V)/z,extent=Math.tan(55*Math.PI/180);
+  return{x:w*(.5+qx/(2*extent)),y:h*.5-w*qy/(2*extent),qx,qy,visible:Math.abs(qx)<=extent&&Math.abs(qy)<=extent*h/w};
+ }
+ function inspectGeometry(c,x=0,y=0,mode=0){
+  const r=ray(c,x,y,mode),U=tangent(c);
+  if(c.bridge)return{status:'bridge',z:r.Ecam,rank:null,normal:null,screen:null,ray:r};
+  if((c.eps??1)===1){const p=compact(c,mode);if(p.z===0){const v=combine(c.B,[0,0,-p.b[1],p.b[0]]);return{status:'singular',z:0,normal:null,screen:null,rank:1,limitScreen:[r.K,v],limitGram:[[dot(r.K,r.K),dot(r.K,v)],[dot(v,r.K),dot(v,v)]],ray:r};}
+   if(Math.abs(p.z)<CONTROL_MIN)return{status:'numeric-band',z:p.z,normal:null,screen:null,rank:2,gamma:1/Math.abs(p.z),ray:r};
+  }
+  const f=normalWorld(c,mode),s=pixelFrame(c,x,y,mode),axes=(c.eps??1)===1?[f.H,f.R,f.V]:[f.F,f.R,f.V];
+  const normalError=Math.max(...axes.map(v=>Math.abs(dot(v,U)))),screenError=Math.max(...[s.R,s.V].flatMap(v=>[Math.abs(dot(v,U)),Math.abs(dot(v,r.K)),Math.abs(dot(v,v)-1)]),Math.abs(dot(s.R,s.V)));
+  return{status:'regular',timelike:c.eps===-1,z:r.Ecam,gamma:c.eps===-1?Math.abs(U[3]):1/Math.abs(compact(c,mode).z),rank:2,normal:f,screen:s,normalError,screenError,lensGram:c.eps===-1?0:gramNormal(normalCoefficients(c,mode)),ray:r};
+ }
+ return{dot,dot3,md,add,sub,mul,lin,cross,unit,combine,identity,cp,initial,headInitial,cleanQ,cleanJ,gramNormal,gramBody,validBody,exact,compact,normalCoefficients,normalWorld,rayCoefficients,ray,pixelRay,pixelFrame,compactYaw,compactPitch,boost,headLook,roll,switchMode,input,control,advance,project,movingRoots,movingU,sgRatio,SNAP,CONTROL_MIN,STRICT_MAX,normalTolerance,bodyTolerance,repairLorentz,stabilize,tangent,speedFrom,betaDot,causalGap,flipCausal,startBridge,bridgeStep,opticalState,opticalDescriptor,canonical,timeFrame,viewAxes,matchView,inspectGeometry,repairState,restAxes,stableNull};
+})();
+globalThis.NormalSky=NormalSky;
+
+const spheres=[[-4.5,.4,-.5,1.65],[4.8,.2,-3,1.85],[-.8,3.7,-7,1.4],[9,3,-12,1.2],[-10,1.4,-14,1.5],[.6,-.3,-17,1.1],[8,.7,19,1.5],[-5,3,24,2],[15,-.3,5,1.8],[-17,2,3,2]];
+const pyramids=[[0,.8,1.5,2.05,.48,.2],[7,3.4,-8,1.75,.9,-.2],[-8,-.2,-7,2.15,1.2,.42],[3,.6,-15,2.5,.3,.1],[-3,3,-19,2.2,1.45,.55],[2,.7,22,2,-.4,.2],[-9,-.4,18,2.25,1.3,-.4],[18,2,-4,2.3,.7,.2]];
+const tetraVertices=[[1,1,1],[-1,-1,1],[-1,1,-1],[1,-1,-1]],faces=[[0,2,1],[0,1,3],[0,3,2],[1,2,3]],triangles=[];
+for(const [x,y,z,size,yaw,tilt]of pyramids){const vertices=tetraVertices.map(v=>{const a=v.map(t=>t*size/Math.sqrt(3)),xx=Math.cos(yaw)*a[0]+Math.sin(yaw)*a[2],zz=-Math.sin(yaw)*a[0]+Math.cos(yaw)*a[2];return[x+xx,y+Math.cos(tilt)*a[1]-Math.sin(tilt)*zz,z+Math.sin(tilt)*a[1]+Math.cos(tilt)*zz];});for(const f of faces)triangles.push(f.map(i=>vertices[i]));}
+const ball={origin:[28,4.8,-1],velocity:[2,0,0],radius:1.3};
+function starTexture(gl,uniform){const W=2048,H=1024,bytes=new Uint8Array(W*H*4);let seed=0x64b15e71;const rand=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};const count=1700,aa=Math.PI/H*.55;
+ for(let k=0;k<count;k++){const lat=Math.asin(2*rand()-1),lon=2*Math.PI*rand()-Math.PI,rad=k<38?.0045+rand()*.009:.0013+Math.pow(rand(),3)*.003,T=2200*Math.pow(12,rand()),power=k<38?1.3+3.6*rand():.3+1.8*rand(),sy=Math.sin(lat),cy=Math.cos(lat),yp=(lat/Math.PI+.5)*H-.5,xp=(lon/(2*Math.PI)+.5)*W-.5,ry=(rad+aa)*H/Math.PI+1,rx=Math.min(W*.5,(rad+aa)*W/(2*Math.PI*Math.max(.012,cy))+2);
+ for(let j=Math.max(0,Math.floor(yp-ry));j<=Math.min(H-1,Math.ceil(yp+ry));j++){const phi=((j+.5)/H-.5)*Math.PI,sphi=Math.sin(phi),cphi=Math.cos(phi);for(let i=Math.floor(xp-rx);i<=Math.ceil(xp+rx);i++){const theta=((i+.5)/W-.5)*2*Math.PI,cosa=sy*sphi+cy*cphi*Math.cos(theta-lon),ang=Math.acos(Math.max(-1,Math.min(1,cosa))),cov=Math.max(0,Math.min(1,(rad+aa-ang)/(2*aa)));if(cov<=0)continue;const ix=((i%W)+W)%W,idx=(j*W+ix)*4;if(cov*power<bytes[idx+1]/255*6)continue;bytes[idx]=Math.round(255*cov*T/40000);bytes[idx+1]=Math.round(255*cov*power/6);bytes[idx+3]=Math.round(255*cov);}}}
+ const tex=gl.createTexture();gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA8,W,H,0,gl.RGBA,gl.UNSIGNED_BYTE,bytes);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.generateMipmap(gl.TEXTURE_2D);gl.uniform1i(uniform,0);return count;
+}
+
+function runTests(M,ball){
+ const results=[],assert=(b,msg='断言失败')=>{if(!b)throw Error(msg);},near=(a,b,t=1e-9)=>assert(Math.abs(a-b)<t,`${a} != ${b}`),vn=(a,b,t=1e-9)=>a.forEach((v,i)=>near(v,b[i],t));
+ const test=(name,fn)=>{try{const d=fn();results.push({name,ok:true,detail:d||''});}catch(e){results.push({name,ok:false,detail:e.message});}};
+ const opts={mode:0,turns:2,rapidity:2,extent:1.2};
+ test('初始机身 U²=+1，法向签名 (−,+,+)',()=>{for(const s of [-1,1]){const c=M.initial(s);assert(M.validBody(c));near(M.gramNormal(c.J),0);}});
+ test('测地推进：X=X₀+sU₀，机身基矢不变',()=>{const c=M.initial(),o=M.exact(c,.8,[0,0,0]);vn(o.X,M.add(c.X,M.mul(c.B[0],.8)));o.B.forEach((v,i)=>vn(v,c.B[i]));});
+ test('类时法向推力：cosh/sinh 解析解',()=>{const c=M.initial(),o=M.exact(c,.7,[1,0,0]);vn(o.B[0],M.lin(c.B[0],Math.cosh(.7),c.B[1],Math.sinh(.7)));});
+ test('类空法向推力：cos/sin 解析解',()=>{const c=M.initial(),o=M.exact(c,.7,[0,1,0]);vn(o.B[0],M.lin(c.B[0],Math.cos(.7),c.B[2],Math.sin(.7)));});
+ test('非零零模推力无除零',()=>{const c=M.initial(),A=[1,1,0],a=M.combine(c.B.slice(1),A),o=M.exact(c,.4,A);vn(o.B[0],M.lin(c.B[0],1,a,.4));vn(o.X,M.add(c.X,M.lin(c.B[0],.4,a,.08)));assert(M.validBody(o));});
+ test('费米解析更新可逆，2000步不重置历史朝向',()=>{const c=M.initial(),A=[.3,-.2,.1],r=M.exact(M.exact(c,.7,A),-.7,A);vn(r.X,c.X);r.B.forEach((v,i)=>vn(v,c.B[i]));let o=c;for(let k=0;k<2000;k++)o=M.exact(o,.002,[.15*Math.sin(k*.2),.12*Math.cos(k*.15),.07*Math.sin(k*.4)]);assert(M.gramBody(o)<1e-9);return M.gramBody(o).toExponential(2);});
+ const samples=[];for(const sign of [-1,1])for(const angle of [0,.4,1.2,1.57,2,3.2]){let c=M.compactPitch(M.compactYaw(M.initial(sign),angle),.27);c=M.exact(c,.23,[.12,-.08,.04]);samples.push(c);}
+ test('几乎处处：镜头 H/R/V 始终属于 U⊥',()=>{let e=0;for(const c of samples){const f=M.normalWorld(c,0);for(const v of [f.H,f.R,f.V])e=Math.max(e,Math.abs(M.dot(v,c.B[0])));}assert(e<1e-8);return e.toExponential(2);});
+ test('几乎处处：镜头单位正交，H²=−1',()=>{let e=0;for(const c of samples)e=Math.max(e,M.gramNormal(M.normalCoefficients(c,0)));assert(e<2e-7);return e.toExponential(2);});
+ test('逐像素屏幕属于 U⊥∩K⊥，且为单位正交',()=>{let e=0;for(const c of samples)for(const [x,y]of [[0,0],[.5,-.3],[-.8,.6]]){const f=M.pixelFrame(c,x,y,0),r=M.ray(c,x,y,0);for(const v of [f.R,f.V]){e=Math.max(e,Math.abs(M.dot(v,c.B[0])),Math.abs(M.dot(v,r.K)),Math.abs(M.dot(v,v)-1));}e=Math.max(e,Math.abs(M.dot(f.R,f.V)));}assert(e<2e-6);return e.toExponential(2);});
+ test('缩放光线与实际超曲镜头 Kσ=σU−Hpixel 完全同向',()=>{let e=0;for(const c of samples)for(const [x,y]of [[0,0],[.6,.2],[-1,.7]]){const f=M.pixelFrame(c,x,y,0),r=M.ray(c,x,y,0),K=M.lin(c.B[0],r.sigma,f.H,-1);K.forEach((v,i)=>e=Math.max(e,Math.abs(v-r.K[i]*r.canonicalScale)));}assert(e<2e-7);return e.toExponential(2);});
+ test('全部光线 null、过去指向、Ecam 点积一致',()=>{let e=0;for(const c of samples)for(let x=-2;x<=2;x++)for(let y=-2;y<=2;y++){const r=M.ray(c,x*.5,y*.4,0);e=Math.max(e,Math.abs(M.dot(r.K,r.K)),Math.abs(M.dot(r.K,c.B[0])-r.Ecam));assert(r.Eemit>0);}assert(e<1e-9);return e.toExponential(2);});
+ test('每个正常画面属于一个 chart，而非偷偷混入另一符号',()=>{for(const c of samples){const p=M.compact(c,0);for(const [x,y]of [[0,0],[2,1],[-2,-1],[1,-2]])assert(Math.sign(M.ray(c,x,y,0).Ecam)===p.sigma);}});
+ test('完整画面在边界连续塌缩：正负侧同一光线极限',()=>{let e=0;const c0=M.initial(),a=M.compactYaw(c0,Math.PI/2-1e-8),b=M.compactYaw(c0,Math.PI/2+1e-8),z=M.compactYaw(c0,Math.PI/2),limit=M.lin(c0.B[1],-1,c0.B[2],1);for(const [x,y]of [[-1,-.5],[0,0],[1,.5],[.4,-1]]){const ra=M.ray(a,x,y),rb=M.ray(b,x,y),rz=M.ray(z,x,y);ra.K.forEach((v,i)=>e=Math.max(e,Math.abs(v-rb.K[i])));vn(rz.K,limit);near(rz.Ecam,0);assert(ra.Ecam>0&&rb.Ecam<0);}assert(e<1e-6);return e.toExponential(2);});
+ test('边界没有伪造有限单位镜头标架或屏幕',()=>{const c=M.compactYaw(M.initial(),Math.PI/2);assert(M.normalCoefficients(c,0)===null);assert(M.normalWorld(c,0)===null);assert(M.pixelFrame(c,.2,.3,0)===null);});
+ test('边界前镜头发散：gamma=1/|cosθ|，不是截断后的普通相机',()=>{for(const d of [.1,.01,.001]){const c=M.compactYaw(M.initial(),Math.PI/2-d),j=M.normalCoefficients(c,0);near(j[0][0],1/Math.sin(d),1e-7);}assert(M.normalCoefficients(M.compactYaw(M.initial(),Math.PI/2-.001),0)[0][0]>999);});
+ test('奇异模式横拖一屏两圈，统计四次 chart 跨越',()=>{const c=M.initial(),o=M.headLook(c,1000,0,1000,opts);o.Q.forEach((v,i)=>vn(v,c.Q[i],1e-10));assert(o.crossings===4,'次数 '+o.crossings);vn(o.B.flat(),c.B.flat());});
+ test('两模式右拖右看、上拖抬头，负 chart 不反向',()=>{for(const sign of [-1,1])for(const mode of [0,1]){const c=M.initial(sign),f=M.normalWorld(c,mode),r=M.ray(c,0,0,mode),dx=M.headLook(c,.01,0,1000,{...opts,mode}),dy=M.headLook(c,0,.01,1000,{...opts,mode});assert(M.dot(M.sub(M.ray(dx,0,0,mode).K,r.K),f.R)>0);assert(M.dot(M.sub(M.ray(dy,0,0,mode).K,r.K),f.V)>0);}});
+ test('严格模式 mouse boost 和 roll 永远不改变 sigma',()=>{for(const sign of [-1,1]){let c=M.initial(sign);for(let k=0;k<250;k++){c=M.headLook(c,3*Math.sin(k*.3),2*Math.cos(k*.2),1000,{...opts,mode:1});c=M.roll(c,.01,1);assert(c.sigma===sign);for(const p of [[0,0],[.7,-.4],[-.3,.8]])assert(Math.sign(M.ray(c,...p,1).Ecam)===sign);}assert(c.crossings===0);}});
+ test('严格模式到数值极限只拒绝步长，不回绕或偷偷换片',()=>{let c=M.headLook(M.initial(-1),20000,0,1000,{...opts,mode:1});assert(c.sigma===-1&&c.crossings===0&&c.guard);assert(M.gramNormal(c.J)<8*M.normalTolerance(c.J));const old=c.J[0][0];c=M.headLook(c,-40,0,1000,{...opts,mode:1});assert(c.J[0][0]<old,'无法从护栏返回');});
+ test('严格模式所有法向轴和逐像素屏幕严格正交于 U',()=>{let e=0;for(const sign of [-1,1]){let c=M.boost(M.initial(sign),.8,-.4);c=M.roll(c,.6,1);c=M.exact(c,.2,[.12,-.2,.13]);for(const p of [[0,0],[.7,-.8],[-1,.3]]){const f=M.pixelFrame(c,...p,1),r=M.ray(c,...p,1);for(const v of [f.H,f.R,f.V])e=Math.max(e,Math.abs(M.dot(v,c.B[0])));for(const v of [f.R,f.V])e=Math.max(e,Math.abs(M.dot(v,r.K)),Math.abs(M.dot(v,v)-1));}}assert(e<1e-9);return e.toExponential(2);});
+ test('切换模式保持同一 chart 和整个画面，不重建机身',()=>{let e=0;for(const sign of [-1,1]){let c=M.compactPitch(M.compactYaw(M.initial(sign),.8),-.3);const b=M.switchMode(c,0,1),a=M.switchMode(b,1,0);vn(c.X,b.X);vn(c.B.flat(),b.B.flat());for(const p of [[0,0],[.4,-.7],[-.3,.6]]){const r=M.ray(c,...p,0),s=M.ray(b,...p,1),t=M.ray(a,...p,0);r.K.forEach((v,i)=>{e=Math.max(e,Math.abs(v-s.K[i]),Math.abs(v-t.K[i]));});}}assert(e<1e-9);return e.toExponential(2);});
+ test('切换到严格模式时拒绝边界，不偷偷生成正交标架',()=>{let failed=false;try{M.switchMode(M.compactYaw(M.initial(),Math.PI/2),0,1);}catch(e){failed=true;}assert(failed);});
+ test('六方向推力统一使用当前正常法向 H/R/V',()=>{for(const c of samples)for(const mode of [0]){const f=M.normalWorld(c,mode);for(const [a,v]of [[[-.3,0,0],M.mul(f.H,-.3)],[[.3,0,0],M.mul(f.H,.3)],[[0,.3,0],M.mul(f.R,.3)],[[0,0,.3],M.mul(f.V,.3)]]){const force=M.control(c,a,mode);assert(!force.blocked);vn(force.acceleration,v,1e-8);near(M.dot(force.acceleration,c.B[0]),0,1e-8);}}});
+ test('严格模式推力跟随 J，不使用紧致辅助 Q',()=>{const c=M.boost(M.initial(),.7,.2),d=M.cp(c);d.Q=M.compactYaw(c,1.5).Q;const a=M.control(c,[-.4,.2,.1],1),b=M.control(d,[-.4,.2,.1],1);vn(a.acceleration,b.acceleration);});
+ test('奇异边界只暂停法向推力，机身仍惯性推进',()=>{const c=M.compactYaw(M.initial(),Math.PI/2),r=M.advance(c,.1,[-.5,0,0],0);assert(r.blocked);vn(r.o.B.flat(),c.B.flat());vn(r.o.X,M.add(c.X,M.mul(c.B[0],.1)));assert(M.validBody(r.o));});
+ test('反向按键抵消且组合线性叠加',()=>{for(const k of [['KeyW','KeyS'],['KeyA','KeyD'],['KeyR','KeyF']])vn(M.input(new Set(k)),[0,0,0]);const c=M.compactYaw(M.initial(),.5),a=M.control(c,[-1,1,1],0),b=M.add(M.add(M.control(c,[-1,0,0],0).acceleration,M.control(c,[0,1,0],0).acceleration),M.control(c,[0,0,1],0).acceleration);vn(a.acceleration,b);});
+ test('像素投影/反投影在两模式一致',()=>{for(const sign of [-1,1])for(const mode of [0,1]){let c=M.initial(sign);c=mode?M.boost(c,.5,-.3):M.compactPitch(M.compactYaw(c,.7),-.2);for(const [x,y]of [[130,100],[400,250],[710,450]]){const r=M.pixelRay(c,x,y,800,500,{...opts,mode}),p=M.project(c,r.rd,800,500,{...opts,mode});assert(p);near(p.x,x,1e-7);near(p.y,500-y,1e-7);}}});
+ test('当前 chart 外的光线投影返回无图像，不错误折入另一侧',()=>{const c=M.initial(),other=M.initial(-1),r=M.ray(other);assert(M.project(c,r.rd,800,500,opts)===null);});
+ test('2c 球按发射时刻世界管求交，球切向平方+1',()=>{near(M.dot(M.movingU(ball),M.movingU(ball)),1);let n=0;const ro=[0,2,12];for(const t of [0,1,2])for(let x=-.5;x<.7;x+=.07)for(let y=0;y<.5;y+=.07){const d=M.unit([x,y,-1]),roots=M.movingRoots(ro,d,t,ball);for(const l of roots){const point=M.add(ro,M.mul(d,l)),cen=M.add(ball.origin,M.mul(ball.velocity,t-l));near(Math.hypot(...M.sub(point,cen)),ball.radius,1e-7);assert(t-l<t);n++;}}assert(n>0);return n+' 个发射交点';});
+ test('发射端趋零的显式频移护栏保持有限',()=>{near(M.sgRatio(1,0),1e4);near(M.sgRatio(-1,0),-1e4);near(M.sgRatio(0,0),0);});
+  test('类时未来 / 过去初态：签名 −+++，不强行翻转时间',()=>{for(const st of [-1,1])for(const beta of [0,.7,.992]){const c=M.initial(1,-1,beta,st);assert(M.validBody(c));near(M.dot(c.B[0],c.B[0]),-1,1e-10);assert(Math.sign(c.B[0][3])===st);}});
+  test('类时三方向单位推力均为 boost，保持 u⊥',()=>{for(let j=0;j<3;j++){const c=M.initial(1,-1,.4),A=[0,0,0];A[j]=1;const o=M.exact(c,.4,A);vn(o.B[0],M.lin(c.B[0],Math.cosh(.4),c.B[j+1],Math.sinh(.4)));assert(M.validBody(o));}});
+  test('类时正交像面：所有屏幕轴位于 u⊥∩K⊥',()=>{for(const st of [-1,1]){let c=M.initial(1,-1,.8,st);c=M.headLook(c,117,-57,1000,{...opts,sensitivity:2});c=M.roll(c,.53);for(const q of [[0,0],[1.2,-.7],[-.6,1]]){const i=M.inspectGeometry(c,...q,1);assert(i.normalError<1e-10);assert(i.screenError<1e-10);assert(i.ray.K[3]<0);assert(Math.sign(i.ray.Ecam)===st);}}});
+  test('类时忽略类空 Q/J/A/B 偏好；普通相机方向不变',()=>{const a=M.initial(1,-1,.6),b=M.cp(a);b.Q=M.compactYaw(M.initial(),1.4).Q;b.J=M.boost(M.initial(),1,.4).J;for(const xy of [[0,0],[.6,-.4]])vn(M.ray(a,...xy,0).K,M.ray(b,...xy,1).K);});
+  test('类时鼠标右 / 上轴正确，一屏两圈不影响机身',()=>{let c=M.initial(1,-1,.7);c=M.roll(c,.4);const f=M.normalWorld(c),a=M.headLook(c,.01,0,1000,{...opts,sensitivity:2}),b=M.headLook(c,0,.01,1000,{...opts,sensitivity:2});assert(M.dot(M.sub(M.ray(a).K,M.ray(c).K),f.R)>0);assert(M.dot(M.sub(M.ray(b).K,M.ray(c).K),f.V)>0);const o=M.headLook(c,1000,0,1000,{...opts,sensitivity:2});vn(o.TQ.flat(),c.TQ.flat());vn(o.B.flat(),c.B.flat());});
+  test('类时左右推力 = 同方向转头后前推力',()=>{const c=M.initial(1,-1,.6);for(const [l,dx,up]of [[[0,-1,0],-125,0],[[0,1,0],125,0],[[0,0,1],0,125],[[1,0,0],250,0]]){const b=M.headLook(c,dx,up,1000,{...opts,sensitivity:2});vn(M.control(c,l,0).acceleration,M.control(b,[-1,0,0],1).acceleration);}});
+  test('类时像素投影往返与 110° 普通镜头一致',()=>{for(const st of [-1,1]){const c=M.headLook(M.initial(1,-1,.7,st),91,48,1000,{...opts,sensitivity:2});for(const [x,y]of [[100,100],[400,250],[700,400]]){const r=M.pixelRay(c,x,y,800,500,opts),p=M.project(c,r.rd,800,500,opts);near(p.x,x,1e-7);near(p.y,500-y,1e-7);}}});
+  test('面对面翻面：同一事件、ε翻转、β互为倒数、δ不变',()=>{for(const ep of [-1,1])for(const st of [-1,1]){const c=M.initial(1,ep,ep===1?1.008:.992,st),o=M.flipCausal(c,0);near(M.dot(c.B[0],o.B[0]),0,2e-9);assert(o.eps===-ep&&!o.bridge);near(M.speedFrom(o.B[0]),1/M.speedFrom(c.B[0]),2e-9);near(M.causalGap(o.B[0]),M.causalGap(c.B[0]),2e-12);vn(o.X,c.X);near(o.s,c.s);assert(Math.sign(o.B[0][3])===st);}});
+  test('自动翻面只看实际操作：直接给局部向量也会触发，不读取键名',()=>{for(const [ep,beta,local] of [[1,1.008,[.30,.04,-.02]],[-1,.992,[-.30,.04,-.02]]]){const r=M.advance(M.initial(1,ep,beta),.5,local,0,{allowBridge:true,bridgeBand:.004});assert(!r.halted&&r.o.eps===-ep&&r.o.causalCrossings===1&&!r.o.bridge);}});
+  test('继续保持同一操作：翻面后从光锥另一侧自然离开，而不是立刻再翻回',()=>{for(const [ep,beta,local] of [[1,1.008,[.3,0,0]],[-1,.992,[-.3,0,0]]]){const c=M.initial(1,ep,beta),g0=M.causalGap(c.B[0]),r=M.advance(c,.5,local,0,{allowBridge:true,bridgeBand:.004});assert(r.o.causalCrossings===1);assert(M.causalGap(r.o.B[0])>g0,'翻面后没有离开光锥');assert(!r.o.bridge);}});
+  test('远离光锥、零推力和类空纯侧向转弯都不会因键名误触发',()=>{const c=M.initial(1,1,1.008);assert(M.advance(c,.4,[-.3,0,0],0,{allowBridge:true,bridgeBand:.004}).o.eps===1);assert(M.advance(c,.4,[0,0,0],0,{allowBridge:true,bridgeBand:.004}).o.eps===1);assert(M.advance(c,.4,[0,.3,0],0,{allowBridge:true,bridgeBand:.004}).o.eps===1);});
+  test('关闭自动翻面时保持原因果类型',()=>{for(const ep of [1,-1]){const c=M.initial(1,ep,ep===1?1.008:.992),local=ep===1?[.3,0,0]:[-.3,0,0],r=M.advance(c,.3,local,0,{allowBridge:false,bridgeBand:.004});assert(r.o.eps===ep&&r.o.causalCrossings===0);}});
+  test('翻面计数不混入镜头 chart 跨越计数',()=>{let c=M.compactYaw(M.initial(1,1,1.008),.3);c.crossings=7;const o=M.flipCausal(c,0);assert(o.crossings===7&&o.causalCrossings===1);});
+  test('安全标架修正只清理小漂移，保留事件与时间定向',()=>{for(const ep of [1,-1]){let c=M.exact(M.initial(1,ep,ep===1?2:.6),.5,[.3,-.2,.1]);const old=M.cp(c);c.B[2]=M.add(c.B[2],M.mul(c.B[1],1e-8));c.B[3]=M.mul(c.B[3],1+1e-8);const o=M.repairState(c);assert(M.gramBody(o)<1e-10);vn(o.X,old.X);assert(Math.sign(o.B[0][3])===Math.sign(old.B[0][3]));vn(o.Q.flat(),old.Q.flat());assert(o.repairs>0);}});
+  test('不把大幅损坏标架伪装成可归一化状态；旧调试过渡状态也不强修复',()=>{let c=M.initial();c.B[0]=M.mul(c.B[0],2);let failed=false;try{M.repairState(c);}catch(e){failed=true;}assert(failed);const b=M.bridgeStep(M.startBridge(M.initial(1,1,1.008),.2),.1);vn(M.tangent(M.repairState(b)),M.tangent(b));near(M.dot(M.tangent(b),M.tangent(b)),0,1e-9);});
+  test('10000步有界运动：两因果类型长期正交漂移受控',()=>{let worst=0;for(const ep of [1,-1]){let c=M.initial(1,ep,ep===1?2:.6);for(let k=0;k<5000;k++)c=M.exact(c,.004,[.2*Math.sin(k*.09),.13*Math.cos(k*.13),.11*Math.sin(k*.17)]);worst=Math.max(worst,M.gramBody(c));assert(M.validBody(c));}return worst.toExponential(2);});
+  test('实际机身 boost 超过旧 256 分量墙仍可表示并反向返回',()=>{let c=M.initial(1,-1,0);c=M.exact(c,7,[1,0,0]);assert(Math.abs(c.B[0][3])>500&&M.validBody(c));c=M.exact(c,-7,[1,0,0]);assert(M.validBody(c));near(c.B[0][3],1,1e-7);});
+  test('严格镜头超过旧 128 分量墙，仍不换片并能反向',()=>{let c=M.boost(M.initial(-1),7,0);assert(c.J[0][0]>500&&M.gramNormal(c.J)<8*M.normalTolerance(c.J));const d=M.boost(c,-7,0);assert(d.sigma===-1);near(d.J[0][0],1,1e-7);});
+  test('严格镜头修正保留负 chart 与历史横滚',()=>{let c=M.roll(M.boost(M.initial(-1),1.5,.4),.7,1),old=M.cp(c);c.J[1]=M.add(c.J[1],M.mul(c.J[0],1e-9));const d=M.repairState(c);assert(d.sigma===-1);assert(M.gramNormal(d.J)<1e-10);for(const q of [[0,0],[.3,-.5]])vn(M.ray(d,...q,1).rd,M.ray(old,...q,1).rd,1e-7);});
+  test('大 boost 光线稳定表达：γ约11013时仍为有限过去光线',()=>{for(const ep of [1,-1])for(const st of [-1,1]){let c=M.initial(1,ep,ep===1?2:0,st);c=M.exact(c,ep===1?8:10,[st,0,0]);for(const q of [[0,0],[.1,-.2],[1,.3],[-1,-.7]]){const r=M.ray(c,...q),scale=Math.max(...r.K.map(Math.abs));assert(r.K.every(Number.isFinite)&&r.K[3]<0);assert(Math.abs(M.dot(r.K,r.K))<Math.max(1e-8,scale*scale*1e-12));}}});
+  test('大 boost 中心频移不因两个大浮点数相减而消失',()=>{const c=M.exact(M.initial(1,-1,0),10,[1,0,0]),r=M.ray(c);near(r.Eemit,Math.exp(-10),1e-10);near(r.rd[2],-1,1e-10);assert(r.g>20000&&r.g<23000);});
+ return results;
+}
+
+// A deterministic spacelike worldline; dX/ds=U and U.U=+1 throughout.
+// Its bends are continuous transverse accelerations, independent of the viewing direction.
+function buildAutoRoute(M,ball){
+ const slant=.5,h=1/120,root3=Math.sqrt(3),ease=x=>{x=Math.max(0,Math.min(1,x));return x*x*x*(10+x*(-15+6*x));};
+ const initial=M.initial(1),samples=[],stages=[];
+ let state=M.cp(initial),X=initial.X.slice(),s=0,t=0,aim=[0,0,-1],bodyHeading=0,aimHeading=0,prev={yaw:0,pitch:0,eta:.25,rate:1};
+ function images(position){
+  const a=ball.origin[0]+2*position[3]-position[0],dy=ball.origin[1]-position[1],dz=ball.origin[2]-position[2],r=Math.hypot(dy,dz),disc=a*a-3*r*r;
+  const roots=a>0&&disc>=0?[(2*a-Math.sqrt(disc))/3,(2*a+Math.sqrt(disc))/3].filter(v=>v>0):[];
+  return{a,r,margin:a-root3*r,roots,directions:roots.map(l=>M.unit([a-2*l,dy,dz])),fold:[-.5,Math.sqrt(.75)*dy/Math.max(r,1e-12),Math.sqrt(.75)*dz/Math.max(r,1e-12)]};
+ }
+ function tangent(p){const n=[Math.sin(p.yaw)*Math.cos(p.pitch),Math.sin(p.pitch),-Math.cos(p.yaw)*Math.cos(p.pitch)];return [...M.mul(n,Math.cosh(p.eta)),Math.sinh(p.eta)];}
+ function append(p,name){
+  const U=p.U||tangent(p),old=state.B[0],k=M.dot(old,U),delta=M.sub(U,old),normal=M.lin(delta,1,old,-M.dot(old,delta));
+  const factor=Math.abs(k-1)<1e-8?1:(k<1?Math.acos(Math.max(-1,k))/Math.sqrt(1-k*k):Math.acosh(k)/Math.sqrt(k*k-1));
+  const ds=(samples[samples.length-1].rate+p.rate)*.5*h,acc=M.mul(normal,factor/ds),A=state.B.slice(1).map((axis,i)=>M.dot(acc,axis)*(i===0?-1:1));
+  Object.assign(samples[samples.length-1],{A,ds});state=M.exact(state,ds,A);X=state.X;s=state.s;t=samples.length*h;
+  const im=images(X),near=im.directions[0]||im.fold,follow=ease((t-8)/5);
+  // Blend tracking targets instead of switching the angular velocity at t=10.5.
+  let target=M.unit(M.lin(near,1-follow,im.fold,follow));
+  const start=ease((t-2.5)/6);target=M.unit(M.lin([0,0,-1],1-start,target,start));
+  aim=M.unit(M.lin(aim,Math.exp(-h),target,-Math.expm1(-h)));
+  const bodyRay=M.ray(state,0,0,0).rd,bodyYaw=Math.atan2(bodyRay[0],-bodyRay[2]),aimYaw=Math.atan2(aim[0],-aim[2]);
+  bodyHeading+=Math.atan2(Math.sin(bodyYaw-bodyHeading),Math.cos(bodyYaw-bodyHeading));
+  aimHeading+=Math.atan2(Math.sin(aimYaw-aimHeading),Math.cos(aimYaw-aimHeading));
+  samples.push({t,X:X.slice(),s,camera:M.cp(state),...p,aim:aim.slice(),bodyHeading,aimHeading,name,margin:im.margin});
+ }
+ samples.push({t:0,X:X.slice(),s:0,camera:M.cp(state),...prev,aim:aim.slice(),bodyHeading,aimHeading,name:'从默认场景向前',margin:images(X).margin});
+ function leg(name,duration,target={},lift=0,side=0){
+  const start={...prev},turnU=state.B[0].slice(),begin=t,count=Math.round(duration/h);
+  const sideWorld=[0,0,side,0],sideRaw=M.lin(state.B[2],M.dot(sideWorld,state.B[2]),state.B[3],M.dot(sideWorld,state.B[3]));
+  const turnSide=side?M.mul(sideRaw,1/Math.sqrt(M.dot(sideRaw,sideRaw))):sideRaw;
+  for(let i=0;i<count;i++){const q=(i+1)/count,e=ease(q),p={};for(const k of ['yaw','pitch','eta','rate'])p[k]=start[k]+((target[k]??start[k])-start[k])*e;p.pitch+=lift*Math.sin(Math.PI*q)**2;
+   if(side){p.U=M.lin(turnU,Math.cos(Math.PI*e),turnSide,Math.sin(Math.PI*e));p.eta=Math.asinh(p.U[3]);p.yaw=Math.atan2(p.U[0],-p.U[2]);}
+   append(p,name);}
+  prev={...start,...target};stages.push({name,start:begin,end:t});
+ }
+ function until(name,bound,less){
+  const begin=t;let count=0;
+  while(less?images(X).margin>bound:images(X).margin<bound){if(++count>120*120)throw Error('自动航线未能到达双像事件');append(prev,name);}
+  stages.push({name,start:begin,end:t});
+ }
+ leg('从默认场景向前',2.5);
+ leg('向右上方转弯 · 保持水平',8,{yaw:Math.PI/2,eta:Math.atanh(1/2.3),rate:1.2},.55);
+ leg('斜向追逐 · 2.30c',3,{yaw:Math.PI/2+slant,rate:6});
+ until('追上初始右像 · 第一次合并',-3.2,true);
+ leg('第一次双像消失 · 继续一小段',1,{rate:1.3});
+ leg('第一次侧向加速掉头',6,{yaw:-Math.PI/2+slant,eta:-Math.atanh(1/2.3),rate:1.3},0,-1);
+ leg('掉头后双像重新出现',3,{rate:6});
+ until('观看双像重新分开',8,false);
+ leg('双像展开 · 准备追逐左像',2,{rate:1});
+ leg('向前加速 · 负时间推进增强',8,{yaw:-Math.PI/2-slant,eta:-.85,rate:2});
+ leg('负时间推进 · 追上初始左像',2,{rate:3});
+ until('第二次双像合并',-4,true);
+ leg('第二次双像消失',1,{});
+ leg('第二次侧向加速掉头',7,{yaw:Math.PI/2-slant,eta:.85,rate:.65},0,-1);
+ leg('再次接近双像可见区域',2,{rate:3});
+ until('第二次重新出现',7,false);
+ leg('双像再现 · 航线结束',3,{});
+ function sample(time){
+  const index=Math.min(samples.length-1,Math.max(0,time/h)),i=Math.floor(index),a=samples[i],b=samples[Math.min(i+1,samples.length-1)],f=index-i,o={...a};
+  for(const k of ['yaw','pitch','eta','rate','s','bodyHeading','aimHeading'])o[k]=a[k]+(b[k]-a[k])*f;
+  o.X=M.lin(a.X,1-f,b.X,f);o.aim=M.unit(M.lin(a.aim,1-f,b.aim,f));o.t=Math.min(time,t);return o;
+ }
+ function frame(time){
+  const index=Math.min(samples.length-1,Math.max(0,time/h)),i=Math.floor(index),f=index-i,a=samples[i];
+  const camera=f>0&&a.A?M.exact(a.camera,a.ds*f,a.A):M.cp(a.camera);return{camera,sample:sample(time)};
+ }
+ return{duration:t,samples,stages,sample,frame,images};
+}
+// Broad pacing for the Premiere section: steady cruise through both mergers.
+// Only departure, the post-caption coda and the final stop change playback speed.
+function buildCaptionPlayback(route){
+ const mainDuration=52,duration=65.5,mainEnd=39.50833333333333;
+ const departure=2,transition=4,stop=3,tail=duration-mainDuration;
+ const cruise=mainEnd/(mainDuration-departure/2);
+ const coda=(route.duration-mainEnd-cruise*transition/2)/(tail-transition/2-stop/2);
+ const integral=q=>q*q*q*(1-q/2); // Integral of smoothstep: zero acceleration at both ends.
+ function progress(seconds){
+  if(seconds<=0)return 0;if(seconds>=duration)return route.duration;
+  if(seconds<departure)return cruise*departure*integral(seconds/departure);
+  if(seconds<=mainDuration)return cruise*(seconds-departure/2);
+  const u=seconds-mainDuration;
+  if(u<transition)return mainEnd+cruise*u+(coda-cruise)*transition*integral(u/transition);
+  const base=mainEnd+(cruise+coda)*transition/2;
+  if(u<=tail-stop)return base+coda*(u-transition);
+  const v=u-(tail-stop);
+  return base+coda*(tail-stop-transition)+coda*(v-stop*integral(v/stop));
+ }
+ function secondsAt(value){if(value<=0)return 0;if(value>=route.duration)return duration;let lo=0,hi=duration;for(let i=0;i<52;i++){const m=(lo+hi)/2;if(progress(m)<value)lo=m;else hi=m;}return(lo+hi)/2;}
+ const cues=[
+  {seconds:0,progress:0,label:'10:41 · 平缓出发'},
+  {seconds:departure,progress:progress(departure),label:'匀速播放 · 追逐与两次合并'},
+  {seconds:mainDuration,progress:mainEnd,label:'字幕主段结束 · 双像消失'},
+  {seconds:mainDuration+transition,progress:progress(mainDuration+transition),label:'掉头重现收尾'},
+  {seconds:duration-stop,progress:progress(duration-stop),label:'平缓结束'},
+  {seconds:duration,progress:route.duration,label:'航线结束'}
+ ];
+ return{duration,mainDuration,sequenceStart:641,cues,progress,secondsAt};
+}
+// Interpolate continuous heading and elevation, avoiding a detour over the zenith.
+function blendFlightDirection(M,from,to,weight,heading=null){
+ const a=M.unit(from),b=M.unit(to);if(weight<=0)return a;if(weight>=1)return b;
+ let yawA=Math.atan2(a[0],-a[2]),yawB=Math.atan2(b[0],-b[2]);
+ if(heading){yawA+=2*Math.PI*Math.round((heading.bodyHeading-yawA)/(2*Math.PI));yawB+=2*Math.PI*Math.round((heading.aimHeading-yawB)/(2*Math.PI));}
+ else yawB=yawA+Math.atan2(Math.sin(yawB-yawA),Math.cos(yawB-yawA));
+ const yaw=yawA+(yawB-yawA)*weight,pitchA=Math.asin(Math.max(-1,Math.min(1,a[1]))),pitchB=Math.asin(Math.max(-1,Math.min(1,b[1]))),pitch=pitchA+(pitchB-pitchA)*weight;
+ return[Math.sin(yaw)*Math.cos(pitch),Math.sin(pitch),-Math.cos(yaw)*Math.cos(pitch)];
+}
+function flightScreenRight(M,c){
+ const axes=M.viewAxes(c,0);return M.unit(M.lin(axes.R,1,axes.K,-axes.R[3]/axes.K[3]).slice(0,3));
+}
+// Keep the horizontal axis continuous when a mouse turn crosses a vertical pole.
+function levelFlightView(M,c,direction,bank=0,rightHint=null){
+ const d=M.unit(direction);let R=M.cross(d,[0,1,0]);
+ if(Math.hypot(...R)<1e-8){const previous=rightHint||flightScreenRight(M,c);R=M.lin(previous,1,d,-M.dot3(previous,d));if(Math.hypot(...R)<1e-8)R=M.cross(d,[0,0,1]);}
+ R=M.unit(R);if(rightHint&&M.dot3(R,rightHint)<0)R=M.mul(R,-1);
+ const V=M.cross(R,d),o=M.matchView(c,{K:[...d,-1],R:[...R,0],V:[...V,0]},0);return bank?M.roll(o,bank,0):o;
+}
+
+'use strict';
+(()=>{
+const $=id=>document.getElementById(id),canvas=$('view'),M=NormalSky;
+let fatal=false;
+function fail(e){fatal=true;console.error(e);$('error').hidden=false;$('error').textContent='程序错误\n\n'+(e.stack||e)+'\n\n请保留具体信息；编译失败不等于硬件加速设置有误。';}
+try{
+ const gl=canvas.getContext('webgl2',{alpha:false,antialias:false,depth:false,stencil:false,powerPreference:'high-performance'});if(!gl)throw Error('无法创建 WebGL 2 上下文（尚未开始编译着色器）。');
+ function compile(type,id){const shader=gl.createShader(type),source=$(id).textContent.trim();gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw Error(id+' 编译失败\n'+gl.getShaderInfoLog(shader)+'\n\n'+source.split('\n').map((v,i)=>(i+1)+': '+v).join('\n'));return shader;}
+ const vs=compile(gl.VERTEX_SHADER,'vertex'),fs=compile(gl.FRAGMENT_SHADER,'fragment'),program=gl.createProgram();gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('着色器链接失败：'+gl.getProgramInfoLog(program));gl.deleteShader(vs);gl.deleteShader(fs);gl.useProgram(program);gl.bindVertexArray(gl.createVertexArray());
+ const loc={};for(let i=0;i<gl.getProgramParameter(program,gl.ACTIVE_UNIFORMS);i++){const info=gl.getActiveUniform(program,i);loc[info.name]=gl.getUniformLocation(program,info.name);}for(const name of ['uZ','uB','uCR','uCV','uPosition','uU','uT','uN1','uN2','uStars','uProbe','uSpaceGrid','uGridSpacing','uGridOpacity','uGridRange','uGridY'])if(loc[name]==null)throw Error('缺少必要 uniform：'+name);
+ gl.uniform4fv(loc['uSpheres[0]'],new Float32Array(spheres.flat()));for(const [index,id]of [[0,'uA[0]'],[1,'uC[0]'],[2,'uD[0]']])gl.uniform3fv(loc[id],new Float32Array(triangles.flatMap(t=>t[index])));
+ const starCount=starTexture(gl,loc.uStars);
+ const settings={autoView:false,mode:0,turns:2,rapidity:2,extent:1.2,initialChart:1,sensitivity:2,allowBridge:true,bridgeBand:.004,thrust:Math.exp(-.7),rate:.65,spectral:true,invert:true,exposure:-.5,limit:true,low:0,high:64,nebula:true,lines:true,grid:false,spaceGrid:0,gridSpacing:6,gridOpacity:.55,gridRange:96,gridY:-2.5,moving:true,sourceLab:0,reticle:true,quality:1};
+ let camera=M.initial(),paused=true,dirty=true,drag=null,probe=0,uiStage=0,contextLost=false,lastW=0,lastH=0,noticeTimer=0,lastWarning='',lastWarningTime=0;
+ const autoFlight={enabled:true,ready:true,time:0,playbackTime:0,playback:null,route:null,lookDirection:[0,0,1],bank:0,baseQ:null,lookRight:null,viewBlend:0,viewDrive:0};
+ function viewSettings(){
+  if(!autoFlight.enabled||autoFlight.ready)return settings;
+  const x=Math.max(0,Math.min(1,(autoFlight.time-8)/5)),f=x*x*x*(10+x*(-15+6*x));
+  return{...settings,extent:settings.extent+(Math.max(2.4,settings.extent)-settings.extent)*f*autoFlight.viewBlend};
+ }
+ const autoViewTau=1;
+ function smoothAutoView(dt){
+  const target=Number(settings.autoView);
+  if(dt<=0||(autoFlight.viewBlend===target&&autoFlight.viewDrive===target))return;
+  // Two cascaded exponential filters (tau=1 s each), integrated exactly.
+  // blend'=(drive-blend)/tau stays continuous when the switch changes target.
+  const h=dt/autoViewTau,decay=Math.exp(-h),drive=autoFlight.viewDrive;
+  autoFlight.viewBlend=target+(autoFlight.viewBlend-target+(drive-target)*h)*decay;
+  autoFlight.viewDrive=target+(drive-target)*decay;
+  if(autoFlight.enabled&&!autoFlight.ready)renderFlight();
+ }
+ function flightStatus(){return{playbackTime:autoFlight.playbackTime,playbackDuration:autoFlight.playback?.duration??65.5,mainDuration:52,sequenceTime:641+autoFlight.playbackTime,enabled:autoFlight.enabled,ready:autoFlight.ready,time:autoFlight.time,duration:autoFlight.route?.duration??0,phase:autoFlight.ready?'按 P 开始自动航线':autoFlight.route?.sample(autoFlight.time).name,finished:!!autoFlight.route&&autoFlight.time>=autoFlight.route.duration};}
+ function clearFlightLook(){autoFlight.lookDirection=[0,0,1];autoFlight.bank=0;autoFlight.lookRight=null;}
+ function prepareFlight(){
+  if(!autoFlight.route){autoFlight.route=buildAutoRoute(M,ball);autoFlight.playback=buildCaptionPlayback(autoFlight.route);}
+  autoFlight.time=0;autoFlight.playbackTime=0;autoFlight.ready=false;clearFlightLook();clearDragLook();keys.clear();clearKeyboardInput();settings.mode=0;settings.moving=true;camera=M.initial(1);renderFlight();syncUI();
+ }
+ function renderFlight(){
+  const frame=autoFlight.route.frame(autoFlight.time),direction=blendFlightDirection(M,M.ray(frame.camera,0,0,0).rd,frame.sample.aim,autoFlight.viewBlend,frame.sample);
+  const base=levelFlightView(M,frame.camera,direction);
+  autoFlight.baseQ=base.Q.map(v=>v.slice());
+  const f=M.combine(base.Q,autoFlight.lookDirection),K=M.combine(base.B,[f[2],-1,f[0],f[1]]);
+  const leveled=levelFlightView(M,base,K.slice(0,3),0,autoFlight.lookRight);autoFlight.lookRight=flightScreenRight(M,leveled);
+  const next=autoFlight.bank?M.roll(leveled,autoFlight.bank,0):leveled,sign=M.compact(next,0).sigma;
+  next.crossings=camera.crossings+(sign&&sign!==camera.lastSign?1:0);next.lastSign=sign||camera.lastSign;accept(next);
+ }
+ function setAutoFlight(enabled){
+  autoFlight.enabled=!!enabled;autoFlight.ready=true;autoFlight.time=0;autoFlight.playbackTime=0;clearFlightLook();clearDragLook();keys.clear();clearKeyboardInput();pause(true);
+  if(enabled){camera=M.initial(1);settings.mode=0;settings.moving=true;dirty=true;}
+  syncUI();hud();
+ }
+ function flightSeek(time){
+  if(!Number.isFinite(time))throw Error('航线时间必须为有限数');
+  autoFlight.enabled=true;if(autoFlight.ready)prepareFlight();pause(true);clearDragLook();keys.clear();clearKeyboardInput();
+  autoFlight.time=Math.max(0,Math.min(autoFlight.route.duration,time));autoFlight.playbackTime=autoFlight.playback.secondsAt(autoFlight.time);autoFlight.lookRight=null;renderFlight();draw();hud();return flightStatus();
+ }
+ function applyRoll(angle){
+  if(autoFlight.enabled&&!autoFlight.ready){autoFlight.bank+=angle;renderFlight();}
+  else accept(M.roll(camera,angle,settings.mode));
+ }
+
+ // Residual drag input is consumed with exponential damping, independent of refresh rate.
+ const dragLook={x:0,up:0},dragLookTau=1;
+ function clearDragLook(){dragLook.x=dragLook.up=0;}
+ function smoothDragLook(dt){
+  if(dt<=0||(!dragLook.x&&!dragLook.up))return;
+  // Small angular steps keep noncommuting horizontal/vertical turns consistent across FPS.
+  for(let remaining=dt;remaining>1e-10;){
+   const h=Math.min(remaining,1/240),a=-Math.expm1(-h/dragLookTau);
+   const dx=dragLook.x*a,up=dragLook.up*a;
+   dragLook.x-=dx;dragLook.up-=up;look(dx,up);remaining-=h;
+  }
+ }
+ const keys=new Set();
+ function notice(message){$('notice').textContent=message;$('notice').classList.add('show');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>$('notice').classList.remove('show'),4200);}
+ function warning(message){const now=performance.now();if(message!==lastWarning||now-lastWarningTime>4200){notice(message);lastWarning=message;lastWarningTime=now;}}
+ function pause(value){if(!value&&autoFlight.enabled&&(autoFlight.ready||flightStatus().finished))prepareFlight();paused=!!value;$('play').textContent=paused?'运行 P':'暂停 P';dirty=true;}
+ function safe(fn){try{return fn();}catch(e){clearDragLook();pause(true);keys.clear();clearKeyboardInput();warning(e.message);return false;}}
+ function validate(c,mode=settings.mode){
+  if(!M.validBody(c))throw Error('拒绝非法机身状态；没有强行重设因果类型。');
+  for(const Q of [c.Q,c.TQ]){let e=0;for(let i=0;i<3;i++)for(let j=0;j<3;j++)e=Math.max(e,Math.abs(M.dot3(Q[i],Q[j])-(i===j?1:0)));if(e>1e-8)throw Error('镜头坐标姿态不正交');}
+  if(c.eps===1&&mode===1&&(M.gramNormal(c.J)>8*M.normalTolerance(c.J)||Math.max(...c.J.flat().map(Math.abs))>M.STRICT_MAX))throw Error('严格镜头条件数越过精度预算');return c;
+ }
+ function accept(c){const changed=c.eps!==camera.eps||!!c.bridge!==!!camera.bridge;camera=validate(c);dirty=true;if(changed)syncUI();return true;}
+ function look(dx,up){if(autoFlight.enabled&&!autoFlight.ready){const next=M.headLook(camera,dx,up,Math.max(1,canvas.clientWidth),settings);autoFlight.lookDirection=autoFlight.baseQ.map(axis=>M.dot3(next.Q[2],axis));renderFlight();return true;}const o=M.headLook(camera,dx,up,Math.max(1,canvas.clientWidth),settings);accept(o);if(o.guard)warning(o.guard);return true;}
+ const thrustInput=[0,0,0],thrustInputTau=1;
+ let rollInput=0;
+ const rollInputTau=1;
+ function clearKeyboardInput(){thrustInput.fill(0);rollInput=0;}
+ function smoothRollInput(dt){
+  const target=Number(keys.has('KeyQ'))-Number(keys.has('KeyE')),a=-Math.expm1(-dt/rollInputTau);
+  rollInput+=(target-rollInput)*a;
+ }
+ function smoothThrustInput(dt){
+  // UI seconds: accepted thrust exponentially follows the actual key/strength input.
+  const target=M.input(keys,settings.thrust),a=-Math.expm1(-dt/thrustInputTau);
+  for(let i=0;i<3;i++)thrustInput[i]+=(target[i]-thrustInput[i])*a;
+ }
+ function localInput(){return thrustInput.slice();}
+ function step(ds,local){const before=camera.causalCrossings??0,r=M.advance(camera,ds,local,settings.mode,settings);accept(r.o);if(r.blocked||r.halted)warning(r.reason);if(r.halted)pause(true);if((camera.causalCrossings??0)!==before)notice('在光锥无穷远自动翻到'+(camera.eps===1?'类空单位双曲面':'类时单位双曲面')+'的面对面点；事件位置未跳变。');return r;}
+ function reset(){autoFlight.ready=true;autoFlight.time=0;autoFlight.playbackTime=0;clearFlightLook();clearDragLook();camera=M.initial(autoFlight.enabled?1:settings.initialChart);keys.clear();clearKeyboardInput();pause(true);syncUI();notice('机身与镜头已初始化，显示设置保留；当前 chart '+(settings.initialChart>0?'+':'−')+'。');}
+ function home(force=null){if(autoFlight.enabled&&force!==null)setAutoFlight(false);if(autoFlight.enabled&&!autoFlight.ready&&force===null){clearDragLook();clearKeyboardInput();keys.clear();clearFlightLook();renderFlight();return;}clearDragLook();if(camera.bridge)throw Error('桥接中暂不能重置镜头');const p=M.compact(camera,settings.mode),s=force===null?(p.sigma||camera.lastSign):force;accept(M.headInitial(camera,s));keys.clear();clearKeyboardInput();notice(force===null?'在当前 chart 内归零镜头；未修改机身。':'已显式更换镜头初始 chart；这不是连续转头。');}
+ function boundaryPreset(delta){if(autoFlight.enabled)setAutoFlight(false);clearDragLook();if(camera.eps!==1||camera.bridge)throw Error('零能边界预设只适用于类空正则运动段');if(settings.mode!==0)throw Error('严格模式不提供越界预设。');let c=M.headInitial(camera,1);c=M.compactYaw(c,Math.PI/2+delta);const s=M.compact(c,0).sigma;if(s){c.sigma=s;c.lastSign=s;}accept(c);keys.clear();clearKeyboardInput();pause(true);notice(delta===0?'精确零能边界：单位像面失效，只绘制光线极限。':'仅设置了镜头，机身 X、U、T、N₁、N₂ 保持不变。');}
+ const ranges={mode:[0,1],turns:[.25,4],rapidity:[.25,5],extent:[.25,2.5],initialChart:[-1,1],sensitivity:[.25,4],bridgeBand:[1e-8,.1],thrust:[Math.exp(-3),Math.exp(.7)],rate:[.1,3],exposure:[-7,4],sourceLab:[0,1],quality:[.7,1.5],spaceGrid:[0,2],gridSpacing:[3,12],gridOpacity:[0,1],gridRange:[24,180],gridY:[-12,6]};
+ const bools=['autoView','allowBridge','spectral','invert','limit','nebula','lines','grid','moving','reticle'];
+ const sliderIds=Object.keys(ranges).filter(id=>$(id)?.type==='range');
+ const numberFields={};
+ function ensureWindow(id,value){const e=$(id),v=id==='thrust'?Math.log(value):value;let lo=Number(e.min),hi=Number(e.max);if(v<lo)lo=v-Math.max(Math.abs(v)*.25,Math.abs(hi-lo)*.1,1e-8);if(v>hi)hi=v+Math.max(Math.abs(v)*.25,Math.abs(hi-lo)*.1,1e-8);if(id==='gridOpacity'){lo=0;hi=1;}e.min=String(lo);e.max=String(hi);$(id+'WindowMin').value=lo;$(id+'WindowMax').value=hi;e.step='any';}
+ for(const id of sliderIds){
+  const slider=$(id),wrap=document.createElement('div');wrap.innerHTML=`<div class="number-label">实际数值${id==='thrust'?' h（滑条窗口用 ln h）':''}</div><input id="${id}Number" class="numeric-value" type="number" step="any" aria-label="${id} 实际数值"><details class="slider-window"><summary>滑动窗口${id==='thrust'?'（ln h）':''} · 可修改</summary><div class="bounds"><label>左端<input id="${id}WindowMin" type="number" step="any" value="${slider.min}"></label><label>右端<input id="${id}WindowMax" type="number" step="any" value="${slider.max}"></label></div></details>`;slider.after(wrap);numberFields[id]=$(id+'Number');
+  numberFields[id].addEventListener('change',()=>{safe(()=>option(id,numberFields[id].valueAsNumber));syncUI();});
+  for(const side of ['Min','Max'])$(id+'Window'+side).addEventListener('change',()=>{const a=$(id+'WindowMin').valueAsNumber,b=$(id+'WindowMax').valueAsNumber;if(!Number.isFinite(a)||!Number.isFinite(b)||!(a<b)){warning('滑动窗口必须是两个有限数且左端 < 右端。');syncUI();return;}if(id==='gridOpacity'&&(a<0||b>1)){warning('不透明度的语义范围是 0–1。');syncUI();return;}slider.min=a;slider.max=b;syncUI();});
+ }
+ function syncUI(){
+  $('autoViewToggle').textContent='自动视角：'+(settings.autoView?'开':'关');$('autoViewToggle').setAttribute('aria-pressed',String(settings.autoView));
+  for(const [id,v]of Object.entries(settings)){if(!$(id))continue;if(typeof v==='boolean')$(id).checked=v;else{if(numberFields[id]){ensureWindow(id,v);numberFields[id].value=String(v);}$(id).value=id==='thrust'?Math.log(v):v;}}
+  for(const id of sliderIds){if($(id+'Val'))$(id+'Val').textContent=Math.abs(settings[id])>=1e5||Math.abs(settings[id])>0&&Math.abs(settings[id])<1e-4?settings[id].toExponential(3):settings[id].toFixed(id==='bridgeBand'?5:id==='thrust'?3:2);}
+  const timelike=camera.eps===-1&&!camera.bridge,bridge=!!camera.bridge;
+  $('singularSettings').hidden=timelike||settings.mode!==0;$('strictSettings').hidden=timelike||settings.mode!==1;$('spacelikeLensSettings').hidden=timelike;$('timelikeLensSettings').hidden=!timelike;
+  $('cross').style.visibility=settings.reticle?'visible':'hidden';$('low').disabled=$('high').disabled=!settings.limit;
+  $('mode').disabled=bridge;$('modeNote').textContent=timelike?'当前使用类时 u⊥ 普通镜头。A/B 仅保存回到类空后的规则，不改变当前类时转头和推力。':bridge?'兼容旧调试状态：暂时保留源像面。正常交互不会进入这个状态。':settings.mode===0?'原有 U⊥ 双曲像面；边界承认标架发散和像面塌缩。每片正则画面只有一个相机端符号。':'有限法空间 boost 与横滚保留 chart；安全区自动修正正交漂移，真实条件数极限仍不能跨片。';
+  for(const id of ['gridSpacing','gridOpacity','gridRange','gridY']){$(id).disabled=settings.spaceGrid===0;numberFields[id].disabled=settings.spaceGrid===0;}$('spaceGridControls').style.opacity=settings.spaceGrid===0?'.45':'1';
+  $('modeBadge').textContent=bridge?'兼容旧过渡状态':timelike?'类时 u⊥ · 110°':settings.mode===0?'几乎处处严格 · 奇异跨区':'完全严格 · 单 chart';
+  $('controls').textContent=autoFlight.enabled?'P 播放 / 暂停 · 鼠标自由观察 · V 回正视角 · T 手动驾驶':timelike?'SO(3) 右拖右看 · 上拖抬头　W/S 前后 · A/D 左右 · R/F 上下（u⊥）　Q/E 横滚':bridge?'兼容旧过渡状态':'右拖右看 · 上拖抬头　W/S：∓H　A/D、R/F：法向左右上下　Q/E 横滚';
+  for(const id of ['repairFrame','initializeChart','beforeBoundary','atBoundary','afterBoundary'])$(id).disabled=bridge||(id!=='repairFrame'&&timelike);
+ }
+ function numericGuard(name,value,trial={...settings,[name]:value}){
+  if(!Number.isFinite(value))throw Error('请填写有限数值：'+name);
+  const enums={sourceLab:[0,1],initialChart:[-1,1],spaceGrid:[0,1,2]};if(enums[name]&&!enums[name].includes(value))throw Error('无效枚举值 '+name);
+  if(['gridSpacing','gridRange','thrust','extent','quality'].includes(name)&&!(value>0))throw Error(name+' 必须大于 0');
+  if(['rate','turns','rapidity','sensitivity','low'].includes(name)&&value<0)throw Error(name+' 不能为负数');
+  if(name==='gridOpacity'&&(value<0||value>1))throw Error('不透明度必须在 0–1 之间');
+  if(name==='bridgeBand'&&(!(value>0&&value<.25)||64*Number.EPSILON/value>1e-7))throw Error('翻面紧致距离需要 0 < δ < 0.25，且阈值必须能由双精度可靠表示');
+  if(['low','high'].includes(name)&&(trial.low<0||trial.high<trial.low))throw Error('亮度需满足 0 ≤ 最低 ≤ 最高');
+  if(['gridSpacing','gridRange','gridY','low','high'].includes(name)&&(!Number.isFinite(Math.fround(value))||(value!==0&&Math.fround(value)===0)))throw Error('该值不能由 WebGL 浮点安全表示');
+  if(['gridSpacing','gridRange','gridY'].includes(name)&&Math.abs(value)>1e18)throw Error('长度平方将接近 shader 浮点溢出区；拒绝这个数值，而不是夹回滑条范围');
+  if(name==='gridSpacing'&&trial.gridRange/value>1e30||name==='gridRange'&&value/trial.gridSpacing>1e30)throw Error('网格尺度比超出 shader 可安全表示的区间');
+  if(name==='exposure'&&(!(2**value>0)||!Number.isFinite(Math.fround(2**value))))throw Error('曝光倍率不能由 shader 浮点表示');
+  if(name==='extent'&&value*Math.hypot(1,canvas.height/Math.max(1,canvas.width))>8)throw Error('当前长宽比下双曲窗口边缘放大过大，超出单精度光线分辨预算');
+ }
+ function option(name,value){
+  if(!(name in settings))throw Error('未知设置 '+name);
+  if(name==='mode'){if(autoFlight.enabled)setAutoFlight(false);clearDragLook();const v=Number(value);if(v!==0&&v!==1)throw Error('模式必须为 0 或 1');const next=M.switchMode(camera,settings.mode,v);validate(next,v);camera=next;settings.mode=v;keys.clear();clearKeyboardInput();pause(true);}
+  else if(bools.includes(name))settings[name]=!!value;
+  else{const v=Number(value);numericGuard(name,v);settings[name]=v;}
+  syncUI();resize();dirty=true;draw();hud();return true;
+ }
+ for(const id of Object.keys(ranges))if($(id))$(id).addEventListener($(id).type==='range'?'input':'change',()=>{const v=id==='thrust'?Math.exp(Number($(id).value)):Number($(id).value);safe(()=>option(id,v));syncUI();});
+ for(const id of bools)$(id).addEventListener('change',()=>safe(()=>option(id,$(id).checked)));
+ function bounds(){const a=$('low').valueAsNumber,b=$('high').valueAsNumber;try{numericGuard('low',a,{...settings,low:a,high:b});numericGuard('high',b,{...settings,low:a,high:b});}catch(e){$('boundsError').textContent=e.message+'；保留上次有效值。';return;}settings.low=a;settings.high=b;$('boundsError').textContent='';dirty=true;}
+ for(const id of ['low','high'])$(id).addEventListener('input',bounds);
+ function causalPreset(name){
+  if(autoFlight.enabled)setAutoFlight(false);clearDragLook();keys.clear();clearKeyboardInput();drag=null;canvas.classList.remove('drag');
+  if(name==='rest'||name==='ball')camera=M.initial(settings.initialChart,-1,0);
+  else if(name==='past-rest')camera=M.initial(settings.initialChart,-1,0,-1);
+  else throw Error('未知场景预设 '+name);
+  if(name==='ball'){settings.moving=true;settings.sourceLab=1;}pause(name!=='ball');dirty=true;syncUI();draw();hud();notice('已显式重置为 '+({'rest':'未来向类时静止','past-rest':'过去向类时静止','ball':'类时静止观察 2c 发光图样'}[name])+'；这与因果翻面触发无关。');
+ }
+ for(const [id,name]of [['restDemo','rest'],['pastRestDemo','past-rest'],['ballDemo','ball']])$(id).onclick=()=>safe(()=>causalPreset(name));
+ $('repairFrame').onclick=()=>safe(()=>{if(camera.bridge)throw Error('旧调试过渡状态中不执行单位标架修正');accept(M.repairState(camera));draw();hud();notice('仅修正可安全恢复的正交漂移；位置、时间定向和镜头 chart 未重置。');});
+ for(const b of document.querySelectorAll('[data-high]'))b.onclick=()=>{settings.low=0;settings.high=Number(b.dataset.high);settings.limit=true;syncUI();$('boundsError').textContent='';dirty=true;};
+ $('unitBrightness').onclick=()=>{settings.low=settings.high=1;settings.limit=true;syncUI();dirty=true;};
+ $('autoViewToggle').onclick=()=>safe(()=>option('autoView',!settings.autoView));$('autoToggle').onclick=()=>setAutoFlight(!autoFlight.enabled);$('play').onclick=()=>pause(!paused);$('reset').onclick=reset;$('initializeChart').onclick=()=>safe(()=>home(settings.initialChart));$('beforeBoundary').onclick=()=>safe(()=>boundaryPreset(-.04));$('atBoundary').onclick=()=>safe(()=>boundaryPreset(0));$('afterBoundary').onclick=()=>safe(()=>boundaryPreset(.04));
+ $('settingsToggle').onclick=()=>{$('settings').hidden=!$('settings').hidden;if($('settings').hidden)canvas.focus({preventScroll:true});};
+ function help(open){$('help').hidden=!open;if(open){clearDragLook();pause(true);keys.clear();clearKeyboardInput();}else canvas.focus({preventScroll:true});}$('helpToggle').onclick=()=>help(true);$('closeHelp').onclick=()=>help(false);$('help').onpointerdown=e=>{if(e.target===$('help'))help(false);};
+ $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch(e){notice('浏览器未允许独占全屏，画布仍覆盖当前窗口。');}};
+ canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;canvas.focus({preventScroll:true});drag={id:e.pointerId,x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);canvas.classList.add('drag');e.preventDefault();});
+ canvas.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,up=drag.y-e.clientY;drag.x=e.clientX;drag.y=e.clientY;dragLook.x+=dx;dragLook.up+=up;});
+ const stopDrag=()=>{drag=null;canvas.classList.remove('drag');};for(const id of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(id,stopDrag);
+ canvas.oncontextmenu=e=>e.preventDefault();const changeThrust=t=>option('thrust',t);
+ canvas.addEventListener('wheel',e=>{e.preventDefault();safe(()=>changeThrust(settings.thrust*Math.exp(-e.deltaY*.0015)));},{passive:false});
+ window.addEventListener('keydown',e=>{if(e.code==='Escape'){help(false);$('settings').hidden=true;return;}if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)||!$('help').hidden||e.ctrlKey||e.metaKey||e.altKey)return;const movement=['KeyW','KeyS','KeyA','KeyD','KeyR','KeyF'];if([...movement,'KeyQ','KeyE','Space'].includes(e.code))e.preventDefault();if(movement.includes(e.code)&&autoFlight.enabled)setAutoFlight(false);keys.add(e.code);if(e.repeat)return;if(movement.includes(e.code))pause(false);switch(e.code){case'KeyT':setAutoFlight(!autoFlight.enabled);break;case'KeyP':case'Space':pause(!paused);break;case'KeyV':safe(()=>home());break;case'KeyC':reset();break;case'KeyH':uiStage=(uiStage+1)%3;document.body.classList.toggle('ui-minimal',uiStage===1);document.body.classList.toggle('ui-off',uiStage===2);break;case'Digit1':changeThrust(settings.thrust/1.2);break;case'Digit2':changeThrust(settings.thrust*1.2);break;case'KeyB':option('lines',!settings.lines);break;case'KeyG':option('grid',!settings.grid);break;case'KeyM':option('spaceGrid',(settings.spaceGrid+1)%3);notice('空间网格：'+['关闭','只开启平面网格','开启立体网格'][settings.spaceGrid]);break;case'KeyN':option('nebula',!settings.nebula);break;case'Slash':help(true);break;}});
+ window.addEventListener('keyup',e=>{keys.delete(e.code);if(!camera.bridge&&!['KeyW','KeyS','KeyA','KeyD','KeyR','KeyF'].some(k=>keys.has(k)))camera.armed=true;});window.addEventListener('blur',()=>{clearDragLook();keys.clear();clearKeyboardInput();stopDrag();pause(true);});document.addEventListener('visibilitychange',()=>{if(document.hidden){clearDragLook();keys.clear();clearKeyboardInput();stopDrag();pause(true);}});
+ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;pause(true);notice('WebGL上下文丢失，请重新打开文件。');});
+ function resize(){let factor=Math.min(Math.min(devicePixelRatio||1,1.5)*settings.quality,Math.sqrt(2200000/Math.max(1,innerWidth*innerHeight))),w=Math.max(2,Math.round(innerWidth*factor)),h=Math.max(2,Math.round(innerHeight*factor));if(w*h>2200000){const f=Math.sqrt(2200000/(w*h));w=Math.round(w*f);h=Math.round(h*f);}if(w!==lastW||h!==lastH){canvas.width=lastW=w;canvas.height=lastH=h;gl.viewport(0,0,w,h);dirty=true;}}window.addEventListener('resize',resize);
+ function draw(){if(fatal||contextLost)return;const od=M.opticalDescriptor(camera,settings.mode),source=od.state,p=M.compact(source,od.mode);gl.useProgram(program);gl.uniform2f(loc.uResolution,canvas.width,canvas.height);gl.uniform4fv(loc.uPosition,camera.X);for(const [i,id]of [[0,'uU'],[1,'uT'],[2,'uN1'],[3,'uN2']])gl.uniform4fv(loc[id],source.B[i]);gl.uniform1f(loc.uZ,p.z);gl.uniform2fv(loc.uB,p.b);gl.uniform3fv(loc.uCR,p.R);gl.uniform3fv(loc.uCV,p.V);gl.uniform1f(loc.uSpan,viewSettings().extent);gl.uniform1f(loc.uExposure,2**settings.exposure);gl.uniform2f(loc.uBounds,settings.low,settings.high);gl.uniform4f(loc.uBall,...ball.origin,ball.radius);gl.uniform3fv(loc.uBallVelocity,ball.velocity);
+  gl.uniform1i(loc.uOptics,od.spacelike?0:1);gl.uniform1i(loc.uBridge,camera.bridge?1:0);gl.uniform1f(loc.uTimeSign,Math.sign(source.B[0][3]));
+  for(const [id,key]of [['uOptT','T'],['uOptR','R'],['uOptV','V'],['uOptF','F']])gl.uniform4fv(loc[id],od.base[key]);
+  const eb=od.spacelike?source.B:[od.base.T,od.base.R,od.base.V,od.base.F];gl.uniform4fv(loc.uCamEnergy,eb.map(v=>M.dot(od.tangent,v)));
+  gl.uniform4fv(loc.uStableBoost,od.base.T);const rest=M.restAxes(od.base);for(const [i,id]of [[0,'uRestR'],[1,'uRestV'],[2,'uRestF']])gl.uniform3fv(loc[id],rest[i]);
+  gl.uniform1i(loc.uSpaceGrid,settings.spaceGrid);gl.uniform1f(loc.uGridSpacing,settings.gridSpacing);gl.uniform1f(loc.uGridOpacity,settings.gridOpacity);gl.uniform1f(loc.uGridRange,settings.gridRange);gl.uniform1f(loc.uGridY,settings.gridY);
+  for(const [id,value]of [['uSpectral',settings.spectral],['uInvert',settings.invert],['uLines',settings.lines],['uNebula',settings.nebula],['uGrid',settings.grid],['uMoving',settings.moving],['uSourceLab',settings.sourceLab],['uProbe',probe],['uLimit',settings.limit]])gl.uniform1i(loc[id],Number(value));gl.drawArrays(gl.TRIANGLES,0,3);dirty=false;
+ }
+ function trace(c,r){const ro=c.X.slice(0,3),rd=r.rd;let distance=Infinity,id=-1,name='无穷远星空';for(let i=0;i<spheres.length;i++){const s=spheres[i],o=M.sub(ro,s),b=M.dot3(o,rd),d=b*b-M.dot3(o,o)+s[3]*s[3];if(d<0)continue;let l=-b-Math.sqrt(d);if(l<1e-4)l=-b+Math.sqrt(d);if(l>1e-4&&l<distance){distance=l;id=i;name='球 '+(i+1);}}
+  for(let i=0;i<triangles.length;i++){const tr=triangles[i],a=M.sub(tr[1],tr[0]),b=M.sub(tr[2],tr[0]),p=M.cross(rd,b),det=M.dot3(a,p);if(Math.abs(det)<1e-8)continue;const z=M.sub(ro,tr[0]),u=M.dot3(z,p)/det;if(u<0||u>1)continue;const q=M.cross(z,a),v=M.dot3(rd,q)/det;if(v<0||u+v>1)continue;const l=M.dot3(b,q)/det;if(l>1e-4&&l<distance){distance=l;id=10+Math.floor(i/4);name='三棱锥 '+(1+Math.floor(i/4));}}
+  let roots=[];if(settings.moving){roots=M.movingRoots(ro,rd,c.X[3],ball);if(roots.length&&roots[0]<distance){distance=roots[0];id=100;name='2c 运动球';}}
+  const event=Number.isFinite(distance)?[...M.add(ro,M.mul(rd,distance)),c.X[3]-distance]:null,Eemit=id===100&&settings.sourceLab===0?M.dot(r.K,M.movingU(ball)):r.Eemit;
+  return{...r,id,name,distance,event,roots,Eemit,g:M.sgRatio(r.Ecam,Eemit)};
+ }
+ function inspect(c=camera,x=0,y=0,mode=settings.mode){return M.inspectGeometry(c,x,y,mode);}
+ const fmt=(v,n=4)=>Number.isFinite(v)?v.toFixed(n):'∞',sg=(v,n=4)=>(v>=0?'+':'')+fmt(v,n);
+ function drawVelocityDiagram(U){
+  const c=$('velocityDiagram');if(!c)return;const g=c.getContext('2d');if(!g)return;
+  const W=c.width,H=c.height,sp=Math.hypot(U[0],U[1],U[2]),tt=U[3],beta=Math.abs(tt)>1e-12?sp/Math.abs(tt):Infinity;
+  g.clearRect(0,0,W,H);g.fillStyle='#0a0a0d';g.fillRect(0,0,W,H);
+  const L=31,R=9,T=10,B=24,pw=W-L-R,ph=H-T-B,ox=L,oy=T+ph/2;
+  // Minkowski diagram must use one identical pixel scale for x and t.
+  // x only shows |U_space| >= 0, while t uses both signs, so the available
+  // half-height determines the maximum isotropic scale. This guarantees that
+  // x=±t (the light cone) is exactly 45 degrees on screen.
+  const need=Math.max(2.4,sp*1.12,Math.abs(tt)*1.12,Number.isFinite(beta)?Math.min(beta*1.08,7.5):2.4);
+  const available=Math.min(pw,ph/2),range=Math.min(8,need),scale=available/range;
+  const sx=scale,sy=scale,X=x=>ox+x*scale,Y=t=>oy-t*scale;
+  const xMax=(W-R-ox)/scale,tMax=(ph/2)/scale;
+  // faint plot grid
+  g.lineWidth=1;g.strokeStyle='#202029';g.beginPath();
+  for(let q=1;q<range;q++){g.moveTo(X(q),T);g.lineTo(X(q),H-B)}
+  for(let q=Math.ceil(-range);q<=range;q++){if(q===0)continue;g.moveTo(ox,Y(q));g.lineTo(W-R,Y(q))}g.stroke();
+  // axes
+  g.strokeStyle='#d7d7dd';g.lineWidth=1.2;g.beginPath();g.moveTo(ox,T);g.lineTo(ox,H-B);g.moveTo(ox,oy);g.lineTo(W-R,oy);g.stroke();
+  g.fillStyle='#cfcfd6';g.font='10px ui-monospace,Consolas,monospace';g.fillText('t',ox+5,T+10);g.fillText('x=|𝐔|',W-47,oy-5);
+  // light cone x=|t|
+  g.strokeStyle='#d96672';g.lineWidth=1.4;g.beginPath();g.moveTo(ox,oy);g.lineTo(X(tMax),Y(tMax));g.moveTo(ox,oy);g.lineTo(X(tMax),Y(-tMax));g.stroke();
+  // timelike hyperbola t^2-x^2=1
+  g.strokeStyle='#4da3d9';g.lineWidth=1.5;for(const sg of [1,-1]){g.beginPath();let first=true;for(let x=0;x<=range;x+=range/180){const t=sg*Math.sqrt(1+x*x);if(Math.abs(t)>range)continue;const xx=X(x),yy=Y(t);if(first){g.moveTo(xx,yy);first=false}else g.lineTo(xx,yy)}g.stroke()}
+  // spacelike hyperbola x^2-t^2=1, right branch (spatial magnitude)
+  g.strokeStyle='#7ecb62';g.lineWidth=1.5;g.beginPath();let first=true;for(let t=-range;t<=range;t+=2*range/220){const x=Math.sqrt(1+t*t);if(x>range)continue;const xx=X(x),yy=Y(t);if(first){g.moveTo(xx,yy);first=false}else g.lineTo(xx,yy)}g.stroke();
+  // t = sign(Ut) reference line: its intersection with the U-line has x=|v|/c
+  if(Math.abs(tt)>1e-12){const unitT=tt>0?1:-1;g.strokeStyle='#d7a62a';g.lineWidth=1.25;g.beginPath();g.moveTo(ox,Y(unitT));g.lineTo(W-R,Y(unitT));g.stroke();g.fillStyle='#d7a62a';g.fillText('t='+(unitT>0?'+1':'−1'),ox+4,Y(unitT)-4)}
+  // Four-velocity line, extended to plot edge in its own time direction.
+  if(sp>1e-14||Math.abs(tt)>1e-14){const ax=sp,at=tt,fx=ax>1e-14?xMax/ax:Infinity,ft=Math.abs(at)>1e-14?tMax/Math.abs(at):Infinity,k=Math.min(fx,ft);g.strokeStyle='#eeeeef';g.lineWidth=1.35;g.beginPath();g.moveTo(ox,oy);g.lineTo(X(ax*k),Y(at*k));g.stroke();
+    if(sp<=range&&Math.abs(tt)<=range){g.fillStyle='#f3f3f5';g.beginPath();g.arc(X(sp),Y(tt),3,0,Math.PI*2);g.fill();}
+    if(Math.abs(tt)>1e-12){const unitT=tt>0?1:-1,ix=beta;if(ix<=xMax){g.fillStyle='#f0cf62';g.beginPath();g.arc(X(ix),Y(unitT),3,0,Math.PI*2);g.fill();g.fillStyle='#f0cf62';g.fillText('|v|/c='+beta.toFixed(beta<10?3:1),Math.min(W-92,X(ix)+5),Y(unitT)+12)}else{g.fillStyle='#f0cf62';g.fillText('|v|/c='+beta.toFixed(beta<100?2:0)+' →',W-94,Y(unitT)-4)}}else{g.fillStyle='#f0cf62';g.fillText('|v|/c → ∞',W-80,oy-7)}
+  }
+  g.fillStyle='#8d8d98';g.font='9px ui-monospace,Consolas,monospace';g.fillText('U=('+(sp.toFixed(3))+', '+(tt>=0?'+':'')+tt.toFixed(3)+')',ox+4,H-8);
+ }
+ function hud(){
+  const flight=flightStatus();$('autoToggle').textContent=flight.enabled?'自动航线 T':'手动驾驶 T';$('autoStatusRow').hidden=$('autoPhase').hidden=!flight.enabled;$('autoTime').textContent=flight.ready?'按 P 开始':flight.playbackTime.toFixed(1)+' / '+flight.playbackDuration.toFixed(1)+' s';$('autoPhase').textContent=flight.finished?'航线结束 · P 重播':(flight.playbackTime>=52?'字幕段后收尾 · ':'')+flight.phase;
+  const U=M.tangent(camera),i=inspect(),hit=trace(camera,i.ray),sp=Math.hypot(...U.slice(0,3)),beta=M.speedFrom(U),bridging=!!camera.bridge,timelike=camera.eps===-1&&!bridging,p=M.compact(camera,settings.mode);
+  $('runState').textContent=bridging?(paused?'暂停 · 非单位桥接':'非单位桥接'):paused?'暂停 · 可转头':timelike?'沿有向类时固有参数推进':'沿类空弧长推进';
+  $('arc').textContent=fmt(camera.s,3);$('labT').textContent=sg(camera.X[3],3);$('speed').textContent=fmt(beta,6)+' c';$('timeRate').textContent=sg(U[3],4)+(Math.abs(U[3])<1e-12?' · 零':U[3]>0?' · 正向':' · 反向');$('spaceRate').textContent=fmt(sp,4);
+  drawVelocityDiagram(U);
+  $('zValue').textContent=sg(bridging?i.ray.Ecam:p.z,6);$('gammaLabel').textContent=timelike?'类时 |uᵗ|':bridging?'非单位切向量 V²':'镜头 γ_lens = 1/|q₀|';$('gamma').textContent=bridging?sg(M.dot(U,U),5):timelike?fmt(Math.abs(U[3]),3):fmt(p.z===0?Infinity:1/Math.abs(p.z),3);
+  $('bodyError').textContent=M.gramBody(camera).toExponential(1);$('crossings').textContent=String(camera.crossings);$('causalCount').textContent=String(camera.causalCrossings??0);$('repairCount').textContent=(camera.repairs??0)+' / '+(camera.lensRepairs??0);$('shift').textContent=sg(hit.g,4);$('target').textContent=hit.name+(hit.event?' · t_emit '+fmt(hit.event[3],3):'');
+  $('normalError').textContent=i.status==='regular'?i.normalError.toExponential(1):bridging?'源光束延拓 ≠ V⊥':i.status==='singular'?'无有限单位标架':'不安全展开';$('screenError').textContent=i.status==='regular'?i.screenError.toExponential(1):bridging?'终点接回目标像面':i.status==='singular'?'像面退化':'数值保护';$('screenMetric').textContent=bridging?'不定义单位 V 镜头':i.status==='singular'?'(+,0) · rank 1':'(+,+) · rank 2';
+  $('chartBadge').textContent=bridging?'源像面延拓':timelike?(U[3]>0?'未来向类时':'过去向类时'):p.z===0?'K·U=0 · 边界':'chart '+(p.sigma>0?'+':'−');$('chartBadge').className='badge '+(bridging||p.z===0?'warning':(timelike?U[3]:p.sigma)>0?'positive':'negative');
+  $('causalBadge').textContent=bridging?'桥接 V²='+sg(M.dot(U,U),3):timelike?'u² = −1':'U² = +1';$('causalBadge').className='badge '+(bridging?'warning':timelike?'negative':'positive');
+  $('bridgeProgress').hidden=!bridging;if(bridging)$('bridgeProgress').style.transform='scaleX('+(camera.bridge.elapsed/camera.bridge.duration)+')';
+  $('boundaryBanner').hidden=i.status==='regular';if(i.status!=='regular'){
+   $('boundaryBanner').querySelector('b').textContent=bridging?'运动类型桥接：非单位 V 穿过类光':i.status==='singular'?'零能边界：正交像面退化':'近边界数值保护：单位镜头条件数过大';
+   $('boundaryBanner').querySelector('span').textContent=bridging?'源像面光束仅作显示延拓；不归一化 V，不伪造 V⊥ 单位镜头。':i.status==='singular'?'仅显示连续光线极限；没有有限单位镜头标架。继续拖动可到另一侧。':'缩放光线仍计算；不安全展开单位轴，方向推力暂缓。';
+  }
+ }
+ const tests=runTests(M,ball);tests.push({name:'当前浏览器 WebGL 2 着色器实际编译 / 链接',ok:true,detail:''},{name:'所有必要 uniform 已声明并可寻址',ok:true,detail:''});const passed=tests.filter(t=>t.ok).length;$('testReport').textContent=tests.map(t=>(t.ok?'PASS  ':'FAIL  ')+t.name+(t.detail?' ['+t.detail+']':'')).join('\n');if(passed!==tests.length)throw Error('几何自检未通过：\n'+$('testReport').textContent);$('testStatus').textContent='自检 '+passed+'/'+tests.length+' · '+starCount+' 个黑体星盘';
+ const api={version:'orthogonal-causal-autoflight-2026-10-05',math:M,tests:()=>tests.map(t=>({...t})),state:()=>({camera:M.cp(camera),settings:{...settings},renderExtent:viewSettings().extent,paused,compact:M.compact(camera,settings.mode),inspection:inspect(),tangent:M.tangent(camera),optics:M.opticalDescriptor(camera,settings.mode).spacelike?'spacelike-hyperbolic':'timelike-pinhole',centerHit:trace(camera,M.ray(camera,0,0,settings.mode)),width:canvas.width,height:canvas.height,cssWidth:canvas.clientWidth,cssHeight:canvas.clientHeight}),reset:()=>{reset();draw();hud();},pause,
+  setOption:option,setState:c=>{if(autoFlight.enabled)setAutoFlight(false);clearDragLook();clearKeyboardInput();pause(true);accept(M.cp(c));syncUI();draw();hud();},look:(x,y)=>{clearDragLook();look(x,y);draw();hud();},roll:a=>{applyRoll(a);draw();hud();},home:()=>{home();draw();hud();},preset:value=>{if(typeof value==='string')causalPreset(value);else boundaryPreset(value);draw();hud();},repair:()=>{accept(M.repairState(camera));draw();hud();return api.state();},initialize:s=>{home(s);draw();hud();},
+  autopilot:{status:flightStatus,enable:setAutoFlight,seek:flightSeek,seekPlayback:seconds=>{if(autoFlight.ready)prepareFlight();return flightSeek(autoFlight.playback.progress(seconds));},cues:()=>autoFlight.playback?.cues.map(c=>({...c}))??[],stages:()=>autoFlight.route?.stages.map(v=>({...v}))??[],images:()=>autoFlight.route?.images(camera.X)??null},
+  step:(ds,v=[0,0,0])=>{if(autoFlight.enabled)setAutoFlight(false);pause(true);const result=step(ds,v);draw();hud();return result;},control:v=>M.control(camera,v||localInput(),settings.mode),inspect:(x=0,y=0)=>inspect(camera,x,y),rayAt:(x,y)=>M.pixelRay(camera,x,y,canvas.width,canvas.height,viewSettings()),traceAt:(x,y)=>trace(camera,M.pixelRay(camera,x,y,canvas.width,canvas.height,viewSettings())),project:point=>M.project(camera,M.sub(point,camera.X.slice(0,3)),canvas.clientWidth,canvas.clientHeight,viewSettings()),scene:()=>({spheres,triangles,ball}),
+  render:()=>{draw();hud();},graphicsError:()=>gl.getError(),pixel:(x,y,p=0)=>{probe=p;draw();const out=new Uint8Array(4);gl.readPixels(Math.floor(x),Math.floor(y),1,1,gl.RGBA,gl.UNSIGNED_BYTE,out);probe=0;dirty=true;return Array.from(out);}
+ };window.SpacelikeLab=api;
+ let last=performance.now(),hudTime=0,frames=0,fpsTime=last;
+ function tick(now){if(fatal||contextLost)return;const inputDt=Math.max(0,(now-last)/1000),dt=Math.min(.075,inputDt);last=now;safe(()=>{smoothDragLook(inputDt);smoothThrustInput(inputDt);smoothRollInput(inputDt);smoothAutoView(inputDt);});const spin=rollInput;if(spin)safe(()=>applyRoll(spin*dt*1.2));if(!paused&&dt>0)safe(()=>{if(autoFlight.enabled){autoFlight.playbackTime=Math.min(autoFlight.playback.duration,autoFlight.playbackTime+inputDt*settings.rate/.65);autoFlight.time=autoFlight.playback.progress(autoFlight.playbackTime);renderFlight();if(flightStatus().finished)pause(true);}else step(dt*settings.rate,localInput());});resize();if(dirty)draw();if(now-hudTime>100){hud();hudTime=now;}frames++;if(now-fpsTime>800){$('fps').textContent=Math.round(frames*1000/(now-fpsTime))+' fps';frames=0;fpsTime=now;}requestAnimationFrame(tick);}
+ syncUI();resize();pause(true);draw();hud();requestAnimationFrame(tick);
+}catch(e){fail(e);}
+})();
+
+</script></body></html>
